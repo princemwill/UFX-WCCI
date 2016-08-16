@@ -13,7 +13,7 @@ namespace UFX_WCCI.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201608161744453_Initial"; }
+            get { return "201608161836052_Initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -12,9 +12,11 @@ namespace UFX_WCCI.Migrations
                 c => new
                     {
                         PostingID = c.Int(nullable: false, identity: true),
+                        Price = c.String(),
                         Desc = c.String(),
-                        Photo = c.String(),
                         Quantity = c.Int(nullable: false),
+                        Photo = c.String(),
+                        PostingTime = c.DateTime(nullable: false),
                         AppUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.PostingID)

@@ -203,13 +203,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608161744453_Initial.cs" />
-    <Compile Include="Migrations\201608161744453_Initial.Designer.cs">
-      <DependentUpon>201608161744453_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608161815134_Test.cs" />
-    <Compile Include="Migrations\201608161815134_Test.Designer.cs">
-      <DependentUpon>201608161815134_Test.cs</DependentUpon>
+    <Compile Include="Migrations\201608161836052_Initial.cs" />
+    <Compile Include="Migrations\201608161836052_Initial.Designer.cs">
+      <DependentUpon>201608161836052_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -302,11 +298,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608161744453_Initial.resx">
-      <DependentUpon>201608161744453_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608161815134_Test.resx">
-      <DependentUpon>201608161815134_Test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608161836052_Initial.resx">
+      <DependentUpon>201608161836052_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
