@@ -18,10 +18,13 @@
             @Html.DisplayNameFor(model => model.Desc)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Photo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Quantity)
+            @Html.DisplayNameFor(model => model.PostingTime)
         </th>
         <th></th>
     </tr>
@@ -35,10 +38,13 @@
             @Html.DisplayFor(modelItem => item.Desc)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Photo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
+            @Html.DisplayFor(modelItem => item.PostingTime)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PostingID }) |

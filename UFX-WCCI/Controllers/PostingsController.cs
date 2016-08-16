@@ -46,7 +46,7 @@ namespace UFX_WCCI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PostingID,Price,Desc,Photo,Quantity")] Posting posting)
+        public ActionResult Create([Bind(Include = "PostingID,Price,Desc,Quantity,Photo,PostingTime")] Posting posting)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace UFX_WCCI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PostingID,Price,Desc,Photo,Quantity")] Posting posting)
+        public ActionResult Edit([Bind(Include = "PostingID,Price,Desc,Quantity,Photo,PostingTime")] Posting posting)
         {
             if (ModelState.IsValid)
             {
