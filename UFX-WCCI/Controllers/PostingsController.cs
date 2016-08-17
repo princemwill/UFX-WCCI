@@ -32,6 +32,7 @@ namespace UFX_WCCI.Controllers
         // GET: Postings
         public ActionResult Index()
         {
+            ViewBag.CurrentUser = CurrentUser;
             return View(db.Postings.ToList());
         }
 
