@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Simple Map</title>
+    <title>UFX Map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
@@ -89,14 +89,16 @@
                 title: "You are here!" 
             });
             google.maps.event.addListener(marker, 'dragend', function (a) {
-                latlon = new google.maps.LatLng(lat, lon);
-                ulat = position.coords.latitude;
-                ulon = position.coords.longitude;
                 console.log(a);
+                var ulat = a.latLng.lat();
+                var ulon = a.latLng.lng();
+                console.log(ulat);
+                console.log(ulon);
 
-                document.getElementById("userdrag").innerHTML = ulat;
-                document.getElementById("userdrag").innerHTML = ulon;
+                document.getElementById("userlat").innerHTML = ulat;
+                document.getElementById("userlon").innerHTML = ulon;                           
             });
+
 
         }
         //Error related code when user has no location or denies access
