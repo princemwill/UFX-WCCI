@@ -130,6 +130,8 @@ namespace UFX_WCCI.Controllers
             return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
         }
 
+     
+
         //
         // POST: /Manage/EnableTwoFactorAuthentication
         [HttpPost]

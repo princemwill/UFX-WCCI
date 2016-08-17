@@ -23,7 +23,28 @@
             }
             ]
         </dd>
-       
+        @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.Bio, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
+
+        @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+
+        @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
+
+        @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+
         @*
             Phone Numbers can used as a second factor of verification in a two-factor authentication system.
              
