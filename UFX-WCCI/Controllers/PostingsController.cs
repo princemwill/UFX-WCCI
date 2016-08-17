@@ -7,12 +7,27 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using UFX_WCCI.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace UFX_WCCI.Controllers
 {
     public class PostingsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        private ApplicationUser CurrentUser
+        {
+
+        get
+            {
+                UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+                ApplicationUser currentUser = UserManager.FindById(User.Identity.GetUserId());
+                return currentUser;
+            }
+
+        }
+        
 
         // GET: Postings
         public ActionResult Index()
@@ -46,8 +61,11 @@ namespace UFX_WCCI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PostingID,Price,Desc,Quantity,Photo,PostingTime")] Posting posting)
+        public ActionResult Create([Bind(Include = "PostingID,Price,Desc,Quantity,Photo")] Posting posting)
         {
+            posting.AppUser = CurrentUser;
+            posting.PostingTime = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Postings.Add(posting);
