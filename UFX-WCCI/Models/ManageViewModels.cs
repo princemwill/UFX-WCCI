@@ -12,7 +12,10 @@ namespace UFX_WCCI.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
-        
+        public string Bio { get; set; }
+        public string Photo { get; set; }
+        public float Latitude { get; set; }
+        public float Longitude { get; set; }
     }
 
     public class ManageLoginsViewModel
