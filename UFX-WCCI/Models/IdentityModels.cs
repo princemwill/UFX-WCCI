@@ -39,6 +39,6 @@ namespace UFX_WCCI.Models
 
         public System.Data.Entity.DbSet<UFX_WCCI.Models.Posting> Postings { get; set; }
 
-
+        
     }
 }

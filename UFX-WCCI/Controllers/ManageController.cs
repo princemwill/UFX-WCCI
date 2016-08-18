@@ -7,12 +7,26 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using UFX_WCCI.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace UFX_WCCI.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationUser CurrentUser
+        {
+
+            get
+            {
+                UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+                ApplicationUser currentUser = UserManager.FindById(User.Identity.GetUserId());
+                return currentUser;
+            }
+
+        }
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -221,6 +235,23 @@ namespace UFX_WCCI.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult EditProfile (string Bio, string Photo, float Latitude, float Longitude)
+        {
+           var user = db.Users.Find(CurrentUser.Id);
+            
+            if (ModelState.IsValid)
+
+             
+            {
+                user.Bio = Bio;
+                user.Photo = Photo;
+                user.Latitude = Latitude;
+                user.Longitude = Longitude;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
 
         //
         // POST: /Manage/ChangePassword
@@ -245,6 +276,7 @@ namespace UFX_WCCI.Controllers
             AddErrors(result);
             return View(model);
         }
+
 
         //
         // GET: /Manage/SetPassword
