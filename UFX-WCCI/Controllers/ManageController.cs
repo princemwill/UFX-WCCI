@@ -78,13 +78,19 @@ namespace UFX_WCCI.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                Bio = user.Bio,
+                Photo = user.Photo,
+                Latitude = user.Latitude,
+                Longitude = user.Longitude
             };
             return View(model);
         }
