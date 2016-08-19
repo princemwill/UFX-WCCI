@@ -250,6 +250,8 @@ namespace UFX_WCCI.Controllers
                 user.Longitude = Longitude;
                 db.SaveChanges();
             }
+
+
             return RedirectToAction("Index", "Home");
         }
 

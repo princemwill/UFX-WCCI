@@ -14,18 +14,25 @@ namespace UFX_WCCI.Migrations
 
         protected override void Seed(UFX_WCCI.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Postings.AddOrUpdate(p => p.AppUser,
+            new Models.Posting
+            {
+                PostingID = 1,
+                Desc = "7890 2nd Ave E",
+                Quantity = 2,
+                Photo = "https://jpeg.org/images/jpeg-home.jpg",
+                PostingTime = DateTime.Now
+            },
+            new Models.Posting
+            {
+                PostingID = 2,
+                Desc = "This is some awesomeness and some delicious kale and stuff",
+                Quantity = 50,
+                Photo = "https://authoritynutrition.com/wp-content/uploads/2013/05/kale.jpg",
+                PostingTime = DateTime.Now
+            }
+            );
         }
     }
 }
+

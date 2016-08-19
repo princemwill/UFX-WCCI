@@ -58,11 +58,11 @@ namespace UFX_WCCI
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "1005808338801-lbkiuhatjar0c8th84qm3n09t2cp4upj.apps.googleusercontent.com",
+                ClientSecret = "YusIRAwUpBAG-QUt4I-4lM1R"
+            });
         }
     }
 }

@@ -3,6 +3,10 @@
     ViewBag.Title = "Manage";
 }
 
+@*Need hidden input fields; input type=hidden
+    instead of document.getelementById, look at forms and change value of form field. Its Id will be document.getElementById.Latitude?
+    *@
+
 <h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
@@ -102,3 +106,130 @@
 
     </dl>
 </div>
+
+<!DOCTYPE html>
+<!--Google map api tutorial code -->
+<html>
+
+<head>
+    <title>UFX Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!--<div id="map"></div>-->
+    <!--<script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>-->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_5d0I5MbY5ADI2xmTZwpMDFHkyl4J2Fg&callback=initMap"
+            async defer></script>-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_5d0I5MbY5ADI2xmTZwpMDFHkyl4J2Fg&callback=getLocation"
+            async defer></script>
+
+    <!--Google api code ^-->
+    <!------------------------------------------------------------------------------------------------>
+    <!--HTML api code-->
+
+
+    <p id="demo">Click the button to get your position.</p>
+
+    <button onclick="getLocation()">Try It</button>
+
+    <div> Lat: <span id="lat"></span> Long: <span id="lon"></span> </div>
+    <!--Map place holder from google-->
+    <!--<div id="map"></div>-->
+    <!--I think map place holder from html-->
+    <div id="mapholder"></div>
+
+
+    <script>
+        var x = document.getElementById("demo");
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+            latlon = new google.maps.LatLng(lat, lon)
+            mapholder = document.getElementById('mapholder')
+            mapholder.style.height = '250px';
+            mapholder.style.width = '500px';
+
+
+            //Pulls lat and long values from above code and puts it in the function to print to web using code below
+            document.getElementById("lat").innerHTML = lat;
+            document.getElementById("lon").innerHTML = lon;
+
+            var myOptions = {
+                center:latlon,zoom:14,
+                mapTypeId:google.maps.MapTypeId.ROADMAP,
+                mapTypeControl:false,
+                navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+            }
+
+            var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+
+            var marker = new google.maps.Marker({
+                position: latlon,
+                map: map,
+                draggable: true,
+                title: "You are here!"
+            });
+            google.maps.event.addListener(marker, 'dragend', function (a) {
+                console.log(a);
+                var ulat = a.latLng.lat();
+                var ulon = a.latLng.lng();
+                console.log(ulat);
+                console.log(ulon);
+
+                document.getElementById("userlat").innerHTML = ulat;
+                document.getElementById("userlon").innerHTML = ulon;
+            });
+
+
+        }
+        //Error related code when user has no location or denies access
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    x.innerHTML = "User denied the request for Geolocation."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML = "Location information is unavailable."
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    x.innerHTML = "An unknown error occurred."
+                    break;
+            }
+        }
+    </script>
+
+    <div>User selected position: Lat: <span id="userlat"></span> Lon:<span id="userlon"></span></div>
+
+</body>
+</html>
