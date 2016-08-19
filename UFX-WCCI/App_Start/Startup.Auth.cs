@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using UFX_WCCI.Models;
+using System.Web.Configuration;
 
 namespace UFX_WCCI
 {
@@ -60,8 +61,9 @@ namespace UFX_WCCI
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "1005808338801-lbkiuhatjar0c8th84qm3n09t2cp4upj.apps.googleusercontent.com",
-                ClientSecret = "YusIRAwUpBAG-QUt4I-4lM1R"
+                ClientId = WebConfigurationManager.AppSettings["GoogleClientId"],
+                ClientSecret = WebConfigurationManager.AppSettings["GoogleSecret"]
+        
             });
         }
     }

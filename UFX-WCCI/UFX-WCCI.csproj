@@ -280,6 +280,9 @@
     <Content Include="Views\Postings\Edit.cshtml" />
     <Content Include="Views\Postings\Index.cshtml" />
     <Content Include="Views\Postings\UserProfile.cshtml" />
+    <Content Include="Secrets.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
