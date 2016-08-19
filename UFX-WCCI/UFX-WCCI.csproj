@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201608191826272_removed photo string.Designer.cs">
       <DependentUpon>201608191826272_removed photo string.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608191951091_added code for post pics.cs" />
+    <Compile Include="Migrations\201608191951091_added code for post pics.Designer.cs">
+      <DependentUpon>201608191951091_added code for post pics.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -312,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608191826272_removed photo string.resx">
       <DependentUpon>201608191826272_removed photo string.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608191951091_added code for post pics.resx">
+      <DependentUpon>201608191951091_added code for post pics.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

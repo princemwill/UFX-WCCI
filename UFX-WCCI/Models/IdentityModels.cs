@@ -19,13 +19,13 @@ namespace UFX_WCCI.Models
     public class ApplicationUser : IdentityUser
     {
 
-        public string Bio { get; set; }        
+        public string Bio { get; set; }
         public float Latitude { get; set; }
         public float Longitude { get; set; }
         public string PhotoName { get; set; } /*← This will be the name of the picture*/
-public string PhotoType { get; set; } /*← This will be the type of the picture ex.jpeg*/
-public byte[] PhotoBytes { get; set; } /*← This will be the byte array representation*/
-public FileType FileType { get; set; } /*← This is a custom file you create* LOOK BELOW**/
+        public string PhotoType { get; set; } /*← This will be the type of the picture ex.jpeg*/
+        public byte[] PhotoBytes { get; set; } /*← This will be the byte array representation*/
+        public FileType FileType { get; set; } /*← This is a custom file you create* LOOK BELOW**/
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -51,6 +51,6 @@ public FileType FileType { get; set; } /*← This is a custom file you create* L
 
         public System.Data.Entity.DbSet<UFX_WCCI.Models.Posting> Postings { get; set; }
 
-        
+
     }
 }
