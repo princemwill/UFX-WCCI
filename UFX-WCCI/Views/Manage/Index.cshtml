@@ -10,99 +10,112 @@
     <h4>Change your account settings</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>Password:</dt>
-        <dd>
-            [
-            @if (Model.HasPassword)
+    <dt>Password:</dt>
+    <dd>
+        [
+        @if (Model.HasPassword)
             {
-                @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }
-            ]
-        </dd>
-        @using (Html.BeginForm("EditProfile", "Manage", FormMethod.Post))
-        {
-
-            @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.EditorFor(model => model.Bio, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
-
-            @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
-
-            @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
-            
-            @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
-
-            @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
-
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </div>
+            @Html.ActionLink("Change your password", "ChangePassword")
         }
+        else
+        {
+            @Html.ActionLink("Create", "SetPassword")
+        }
+        ]
+    </dd>
+@*@using (Html.BeginForm("ProfPhotoChange", "Manage", null, FormMethod.Post, new { enctype = "multipart/form-data" }))*@
+    @using (Html.BeginForm("EditProfile", "Manage", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.Bio, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
+
+        //photo upload code from B4B sample
+        <div class="form-group">
+            @Html.Label("Avatar", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="upload" id="Avatar" />
+                <br />
+            </div>
+        </div> <!-- end Profile Picture -->
+        @*@Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })*@
+
+        @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
+
+        @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
+
+        @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
 
 
-        @*
-            Phone Numbers can used as a second factor of verification in a two-factor authentication system.
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    }
 
-             See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication using SMS.
 
-             Uncomment the following block after you have set up two-factor authentication
-        *@
-        @*
-            <dt>Phone Number:</dt>
-            <dd>
-                @(Model.PhoneNumber ?? "None")
-                @if (Model.PhoneNumber != null)
-                {
-                    <br />
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
-                    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
-                    }
-                }
-                else
-                {
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
-                }
-            </dd>
-        *@
+    @*
+        Phone Numbers can used as a second factor of verification in a two-factor authentication system.
 
-        @*@if (Model.TwoFactor)
+         See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+            for details on setting up this ASP.NET application to support two-factor authentication using SMS.
+
+         Uncomment the following block after you have set up two-factor authentication
+    *@
+    @*
+        <dt>Phone Number:</dt>
+        <dd>
+            @(Model.PhoneNumber ?? "None")
+            @if (Model.PhoneNumber != null)
             {
-                using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                <br />
+                <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
+                using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <text>Enabled
-                    <input type="submit" value="Disable" class="btn btn-link" />
-                    </text>
+                    <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
                 }
             }
             else
             {
-                using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <text>Disabled
-                    <input type="submit" value="Enable" class="btn btn-link" />
-                    </text>
-                }
-            }*@
+                <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
+            }
+        </dd>
+    *@
 
-    </dl>
+    @*@if (Model.TwoFactor)
+        {
+            using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <text>Enabled
+                <input type="submit" value="Disable" class="btn btn-link" />
+                </text>
+            }
+        }
+        else
+        {
+            using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <text>Disabled
+                <input type="submit" value="Enable" class="btn btn-link" />
+                </text>
+            }
+        }*@
+
+</dl>
+
+
+
+
 
 
 

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -7,7 +6,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using UFX_WCCI.Models;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace UFX_WCCI.Controllers
@@ -78,13 +76,17 @@ namespace UFX_WCCI.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                Bio = user.Bio,                
+                Latitude = user.Latitude,
+                Longitude = user.Longitude
             };
             return View(model);
         }
@@ -236,7 +238,7 @@ namespace UFX_WCCI.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult EditProfile (string Bio, string Photo, float Latitude, float Longitude)
+        public ActionResult EditProfile (string Bio, float Latitude, float Longitude, HttpPostedFileBase upload)
         {
            var user = db.Users.Find(CurrentUser.Id);
             
@@ -244,10 +246,24 @@ namespace UFX_WCCI.Controllers
 
              
             {
-                user.Bio = Bio;
-                user.Photo = Photo;
+                user.Bio = Bio;                
                 user.Latitude = Latitude;
                 user.Longitude = Longitude;
+                if (upload != null && upload.ContentLength > 0)
+                {
+
+
+                    user.PhotoName = System.IO.Path.GetFileName(upload.FileName);
+                    user.FileType = FileType.Avatar;
+                    user.PhotoType = upload.ContentType;
+                    
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        user.PhotoBytes = reader.ReadBytes(upload.ContentLength);
+                    }
+
+                }
+
                 db.SaveChanges();
             }
             return RedirectToAction("Index", "Home");

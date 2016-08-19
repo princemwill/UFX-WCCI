@@ -207,6 +207,14 @@
     <Compile Include="Migrations\201608161836052_Initial.Designer.cs">
       <DependentUpon>201608161836052_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608191513494_usernameLogin_BioFixes_PhotoUplaod.cs" />
+    <Compile Include="Migrations\201608191513494_usernameLogin_BioFixes_PhotoUplaod.Designer.cs">
+      <DependentUpon>201608191513494_usernameLogin_BioFixes_PhotoUplaod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608191826272_removed photo string.cs" />
+    <Compile Include="Migrations\201608191826272_removed photo string.Designer.cs">
+      <DependentUpon>201608191826272_removed photo string.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -282,6 +290,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Migrations\201608191510015_Login w\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -297,6 +306,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608161836052_Initial.resx">
       <DependentUpon>201608161836052_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608191513494_usernameLogin_BioFixes_PhotoUplaod.resx">
+      <DependentUpon>201608191513494_usernameLogin_BioFixes_PhotoUplaod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608191826272_removed photo string.resx">
+      <DependentUpon>201608191826272_removed photo string.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
