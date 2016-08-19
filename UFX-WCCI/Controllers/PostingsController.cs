@@ -27,7 +27,13 @@ namespace UFX_WCCI.Controllers
             }
 
         }
-        
+        public ActionResult UserProfile(string Id)
+        {
+            ApplicationUser user = db.Users.Find(Id);
+
+            return View(user);
+            //return RedirectToAction("Profile", user);
+        }
 
         // GET: Postings
         public ActionResult Index()
