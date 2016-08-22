@@ -77,6 +77,7 @@ namespace UFX_WCCI.Controllers
 
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
+
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
@@ -85,6 +86,7 @@ namespace UFX_WCCI.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
                 Bio = user.Bio,                
+
                 Latitude = user.Latitude,
                 Longitude = user.Longitude
             };
@@ -266,6 +268,8 @@ namespace UFX_WCCI.Controllers
 
                 db.SaveChanges();
             }
+
+
             return RedirectToAction("Index", "Home");
         }
 

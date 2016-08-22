@@ -50,6 +50,7 @@ namespace UFX_WCCI.Models
     {
         [Required]
         [Display(Name = "User Name")]        
+
         public string UserName { get; set; }
 
         [Required]

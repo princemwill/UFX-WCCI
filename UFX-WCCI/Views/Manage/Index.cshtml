@@ -3,6 +3,10 @@
     ViewBag.Title = "Manage";
 }
 
+@*Need hidden input fields; input type=hidden
+    instead of document.getelementById, look at forms and change value of form field. Its Id will be document.getElementById.Latitude?
+    *@
+
 <h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
@@ -126,7 +130,11 @@
 
 </div>
 
+<<<<<<< HEAD
 <!DOCTYPE html>
+=======
+@*<!DOCTYPE html>
+>>>>>>> CCSprint2
 <!--Google map api tutorial code -->
 <html>
 
@@ -157,24 +165,45 @@
         });
       }
     </script>-->
+<<<<<<< HEAD
     <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNDRjmB60jYX-t8ZAm5a8tpiUpyeQcCA8&callback=initMap"
             async defer></script>-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2WGE1YtSTTOFpPzxqIzEpR6aF7liaQbU&callback=getLocation"
+=======
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_5d0I5MbY5ADI2xmTZwpMDFHkyl4J2Fg&callback=initMap"
+            async defer></script>-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_5d0I5MbY5ADI2xmTZwpMDFHkyl4J2Fg&callback=getLocation"
+>>>>>>> CCSprint2
             async defer></script>
 
     <!--Google api code ^-->
     <!------------------------------------------------------------------------------------------------>
     <!--HTML api code-->
+<<<<<<< HEAD
     @*<p id="demo">Click the button to get your position.</p>
 
         <button onclick="getLocation()">Try It</button>*@
     @*test code to view output of user selected location*@
     @*<div> Lat: <span id="lat"></span> Long: <span id="lon"></span> </div>*@
+=======
+
+
+    <p id="demo">Click the button to get your position.</p>
+
+    <button onclick="getLocation()">Try It</button>
+
+    <div> Lat: <span id="lat"></span> Long: <span id="lon"></span> </div>
+>>>>>>> CCSprint2
     <!--Map place holder from google-->
     <!--<div id="map"></div>-->
     <!--I think map place holder from html-->
     <div id="mapholder"></div>
+<<<<<<< HEAD
     
+=======
+
+
+>>>>>>> CCSprint2
     <script>
         var x = document.getElementById("demo");
         function getLocation() {
@@ -224,12 +253,14 @@
                 var ulon = a.latLng.lng();
                 console.log(ulat);
                 console.log(ulon);
+
                 @*test code to view output of user selected location*@
                 //document.getElementById("userlat").innerHTML = ulat;
                 //document.getElementById("userlon").innerHTML = ulon;
 
                 document.getElementById("Latitude").value = ulat;
                 document.getElementById("Longitude").value = ulon;
+
             });
 
 
@@ -252,6 +283,7 @@
             }
         }
     </script>
+
     @*test code to view output of user selected location*@
     @*<div>User selected position: Lat: <span id="userlat"></span> Lon:<span id="userlon"></span></div>*@
 
