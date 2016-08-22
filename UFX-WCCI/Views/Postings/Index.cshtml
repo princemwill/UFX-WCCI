@@ -65,11 +65,8 @@
 
             @if (item.AppUser == ViewBag.CurrentUser)
             {
-                @Html.ActionLink("Edit", "Edit", new { id = item.PostingID }) 
-            }
-            @Html.ActionLink("Details", "Details", new { id = item.PostingID }) |
-            @if (item.AppUser == ViewBag.CurrentUser)
-            {
+                <span> @Html.ActionLink("Edit", "Edit", new { id = item.PostingID }) |</span>
+
                 <span>@Html.ActionLink("Delete", "Delete", new { id = item.PostingID })</span>
             }
         </td>
