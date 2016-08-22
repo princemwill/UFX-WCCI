@@ -10,7 +10,7 @@
 <h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
-<>
+
     <h4>Change your account settings</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -119,30 +119,16 @@
 </dl>
 
 
+@*Map info---------------------------------------------------------------------------*@
 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2WGE1YtSTTOFpPzxqIzEpR6aF7liaQbU&callback=getLocation"
+            async defer></script>
 
-
-
-
-
-
-
-
-</div>
-
-
-    <p id="demo">Click the button to get your position.</p>
-
-    <button onclick="getLocation()">Try It</button>
-
-    <div> Lat: <span id="lat"></span> Long: <span id="lon"></span> </div>
-
-    <!--Map place holder from google-->
-    <!--<div id="map"></div>-->
-    <!--I think map place holder from html-->
+@*displays map and markers accordingly after running all code below*@
     <div id="mapholder"></div>
 
     <script>
+        //Finds users initial location based on device location
         var x = document.getElementById("demo");
         function getLocation() {
             if (navigator.geolocation) {
@@ -159,17 +145,14 @@
             mapholder = document.getElementById('mapholder')
             mapholder.style.height = '250px';
             mapholder.style.width = '500px';
-
-
-            //Pulls lat and long values from above code and puts it in the function to print to web using code below
-            @*test code to view output of user selected location*@
-            //document.getElementById("lat").innerHTML = lat;
-            //document.getElementById("lon").innerHTML = lon;
-
+            
+            //Pulls initial values from above function and displays them in Lat/Long boxes
             document.getElementById("Latitude").value = lat;
             document.getElementById("Longitude").value = lon;
-           
 
+            //Finds user designated location by allowing user to drag pin/marker on map. overrides initial location
+
+            //Allows tweaking of map details and presentation (I think)
             var myOptions = {
                 center:latlon,zoom:14,
                 mapTypeId:google.maps.MapTypeId.ROADMAP,
@@ -178,7 +161,7 @@
             }
 
             var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-
+            //Code for marker and ability to drag marker to designate place
             var marker = new google.maps.Marker({
                 position: latlon,
                 map: map,
@@ -191,14 +174,10 @@
                 var ulon = a.latLng.lng();
                 console.log(ulat);
                 console.log(ulon);
-
-                @*test code to view output of user selected location*@
-                //document.getElementById("userlat").innerHTML = ulat;
-                //document.getElementById("userlon").innerHTML = ulon;
-
+             
+                //Pulls user selected values from above function and displays them in Lat/Long boxes
                 document.getElementById("Latitude").value = ulat;
                 document.getElementById("Longitude").value = ulon;
-
             });
 
 
@@ -221,9 +200,3 @@
             }
         }
     </script>
-
-    @*test code to view output of user selected location*@
-    @*<div>User selected position: Lat: <span id="userlat"></span> Lon:<span id="userlon"></span></div>*@
-
-</body>
-</html>
