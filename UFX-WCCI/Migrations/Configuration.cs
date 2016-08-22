@@ -20,7 +20,6 @@ namespace UFX_WCCI.Migrations
                 PostingID = 1,
                 Desc = "7890 2nd Ave E",
                 Quantity = 2,
-                Photo = "https://jpeg.org/images/jpeg-home.jpg",
                 PostingTime = DateTime.Now
             },
             new Models.Posting
@@ -28,7 +27,6 @@ namespace UFX_WCCI.Migrations
                 PostingID = 2,
                 Desc = "This is some awesomeness and some delicious kale and stuff",
                 Quantity = 50,
-                Photo = "https://authoritynutrition.com/wp-content/uploads/2013/05/kale.jpg",
                 PostingTime = DateTime.Now
             }
             );
