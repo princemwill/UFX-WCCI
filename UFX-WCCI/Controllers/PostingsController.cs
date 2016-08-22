@@ -115,10 +115,28 @@ namespace UFX_WCCI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PostingID,Price,Desc,Quantity,Photo,PostingTime")] Posting posting)
+        public ActionResult Edit([Bind(Include = "PostingID,Price,Desc,Quantity,PostingTime")] Posting posting, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    var avatar = new Posting
+                    {
+                        PhotoName = System.IO.Path.GetFileName(upload.FileName),
+                        FileTypePost = FileTypePost.PicPost,
+                        PhotoType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        avatar.PhotoBytes = reader.ReadBytes(upload.ContentLength);
+                    }
+
+                    posting.PhotoName = avatar.PhotoName;
+                    posting.FileTypePost = avatar.FileTypePost;
+                    posting.PhotoType = avatar.PhotoType;
+                    posting.PhotoBytes = avatar.PhotoBytes;
+                }
                 db.Entry(posting).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
