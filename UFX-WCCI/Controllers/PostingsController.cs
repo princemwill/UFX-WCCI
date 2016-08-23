@@ -43,24 +43,31 @@ namespace UFX_WCCI.Controllers
         }
 
         // GET: Postings/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Posting posting = db.Postings.Find(id);
-            if (posting == null)
-            {
-                return HttpNotFound();
-            }
-            return View(posting);
-        }
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Posting posting = db.Postings.Find(id);
+        //    if (posting == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(posting);
+        //}
 
         // GET: Postings/Create
         public ActionResult Create()
         {
-            return View();
+            if (CurrentUser != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         // POST: Postings/Create
