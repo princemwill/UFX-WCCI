@@ -35,6 +35,9 @@
         @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
 
         //photo upload code from B4B sample
+        @*<div>
+            <img src="~/AvatarFile?id=@Model.Id" width="200" height="200" />
+        </div>*@
         <div class="form-group">
             @Html.Label("Avatar", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
