@@ -39,7 +39,8 @@ namespace UFX_WCCI.Migrations
 
         protected override void Seed(UFX_WCCI.Models.ApplicationDbContext context)
         {
-            context.Postings.AddOrUpdate(p => p.AppUser,
+            AddUserAndRole(context);
+            context.Postings.AddOrUpdate(p => p.PostingID,
             new Models.Posting
             {
                 PostingID = 1,
