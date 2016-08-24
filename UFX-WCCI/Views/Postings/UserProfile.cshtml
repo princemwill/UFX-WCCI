@@ -29,11 +29,6 @@
         @Model.Longitude
  
     </div>
-    @*<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2WGE1YtSTTOFpPzxqIzEpR6aF7liaQbU&callback=getLocation"
-            async defer></script>*@
-
-    @*displays map and markers accordingly after running all code below*@
-    @*<div id="mapholder"></div>*@
     <p>Blah</p>
     <div id="map_canvas" style="width:425px; height:550px"></div>
     <p>Blah</p>
@@ -50,15 +45,12 @@
         function initialize() {
           var myOptions = {
             zoom: 10,
-            center: new google.maps.LatLng(@Model.Latitude, @Model.Longitude),
+            center: new google.maps.LatLng(41.51057, -81.68643),
             mapTypeId: google.maps.MapTypeId.ROADMAP
           }
           map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
-          addMarker(new google.maps.LatLng(@Model.Latitude, @Model.Longitude), "User");
-          addMarker(new google.maps.LatLng(100.0758, -100.6254), "Zombie");
-          addMarker(new google.maps.LatLng(100.0721, -100-6292), "Vampire");
-
+        addMarker(new google.maps.LatLng(41, -81), "User");
         }
 
         function addMarker(latlng, myTitle) {
@@ -66,7 +58,7 @@
             position: latlng,
             map: map,
             title: myTitle,
-            icon: "http://maps.google.com/mapfiles/marker" + String.fromCharCode(markers.length + 65) + ".png"
+            icon: "https://maps.google.com/mapfiles/marker" + String.fromCharCode(markers.length + 65) + ".png"
           }));
         }
 
