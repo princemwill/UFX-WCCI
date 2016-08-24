@@ -85,10 +85,11 @@ namespace UFX_WCCI.Controllers
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
-                Bio = user.Bio,                
+                Bio = user.Bio,
 
                 Latitude = user.Latitude,
-                Longitude = user.Longitude
+                Longitude = user.Longitude,
+                Id = user.Id
             };
             return View(model);
         }
