@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -27,6 +28,10 @@ namespace UFX_WCCI.Models
         public byte[] PhotoBytes { get; set; } /*← This will be the byte array representation*/
         public FileType FileType { get; set; } /*← This is a custom file you create* LOOK BELOW**/
 
+        // Navigation properties
+        public virtual ICollection<ApplicationUser> Following { get; set; }
+        public virtual ICollection<ApplicationUser> Followers { get; set; }
+        public virtual ICollection<Posting> Posts { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -36,12 +41,24 @@ namespace UFX_WCCI.Models
             return userIdentity;
         }
     }
+    
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(x => x.Followers)
+                .WithMany(x => x.Following)
+                .Map(x => x.ToTable("Followers")
+                    .MapLeftKey("UserId")
+                    .MapRightKey("FollowerId"));
+            base.OnModelCreating(modelBuilder);
         }
 
         public static ApplicationDbContext Create()

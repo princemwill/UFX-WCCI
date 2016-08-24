@@ -221,6 +221,10 @@
     <Compile Include="Migrations\201608191951091_added code for post pics.Designer.cs">
       <DependentUpon>201608191951091_added code for post pics.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608241538260_added-icollections.cs" />
+    <Compile Include="Migrations\201608241538260_added-icollections.Designer.cs">
+      <DependentUpon>201608241538260_added-icollections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -297,6 +301,7 @@
     <Content Include="Secrets.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\Postings\PostsMap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -327,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608191951091_added code for post pics.resx">
       <DependentUpon>201608191951091_added code for post pics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608241538260_added-icollections.resx">
+      <DependentUpon>201608241538260_added-icollections.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
