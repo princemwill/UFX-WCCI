@@ -32,8 +32,10 @@
         <th>
             @Html.DisplayNameFor(model => model.PostingTime)
         </th>
-        <th></th>
     </tr>
+
+    @Html.ActionLink("Show Map", "PostsMap", "Postings")
+
 
 @foreach (var item in Model) {
     <tr>
@@ -41,11 +43,6 @@
         <td>         
         @Html.ActionLink(item.AppUser.UserName, "UserProfile", "Postings", new { id = item.AppUser.Id }, null)
 
-
-
-            @*<a href="@Url.Action("Details", "Postings", new { id=item.AppUser})">@Html.DisplayFor(modelItem => item.AppUser.UserName, "Profile", "Postings")</a>*@
-
-            @*@Html.DisplayFor(modelItem => item.AppUser.UserName)*@
         </td>
 
         <td>

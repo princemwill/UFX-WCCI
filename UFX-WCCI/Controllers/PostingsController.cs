@@ -35,6 +35,12 @@ namespace UFX_WCCI.Controllers
             //return RedirectToAction("Profile", user);
         }
 
+        public ActionResult PostsMap()
+        {
+            ViewBag.CurrentUser = CurrentUser;
+            return View(db.Users.ToList());
+        }
+
         // GET: Postings
         public ActionResult Index()
         {
@@ -79,13 +85,13 @@ namespace UFX_WCCI.Controllers
         {
             posting.AppUser = CurrentUser;
             posting.PostingTime = DateTime.Now;
+            CurrentUser.Posts.Add(posting);
 
             if (ModelState.IsValid)
             {
                 if (upload != null && upload.ContentLength > 0)
                 {
-
-
+                    // save the three part field for the picture chosen by user
                     posting.PhotoName = System.IO.Path.GetFileName(upload.FileName);
                     posting.FileTypePost = FileTypePost.PicPost;
                     posting.PhotoType = upload.ContentType;
@@ -96,10 +102,7 @@ namespace UFX_WCCI.Controllers
                     }
 
                 }
-
-
-
-
+                //save posting to the database
                 db.Postings.Add(posting);
                 db.SaveChanges();
                 return RedirectToAction("Index");
