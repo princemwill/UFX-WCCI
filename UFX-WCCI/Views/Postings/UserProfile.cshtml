@@ -24,16 +24,23 @@
         <br />
         @Model.Bio
         <br />
+        @if (Model.Email != null)
+        {
+            <span> @Model.Email </span>
+        }
+        <br />
         @Model.Latitude
         <br />
         @Model.Longitude
  
     </div>
+
     <p>Blah</p>
     <div id="map_canvas" style="width:425px; height:550px"></div>
     <p>Blah</p>
 
-    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyD2WGE1YtSTTOFpPzxqIzEpR6aF7liaQbU"></script>
+
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyBsT1NB4_Y4FwHcrXCKqRXell4s6rInvUg"></script>
     <script type="text/javascript">
 
 
@@ -45,12 +52,16 @@
         function initialize() {
           var myOptions = {
             zoom: 10,
+
             center: new google.maps.LatLng(41.51057, -81.68643),
+
             mapTypeId: google.maps.MapTypeId.ROADMAP
           }
           map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
+
         addMarker(new google.maps.LatLng(41, -81), "User");
+
         }
 
         function addMarker(latlng, myTitle) {

@@ -16,6 +16,7 @@ namespace UFX_WCCI.Models
         public string Photo { get; set; }
         public float Latitude { get; set; }
         public float Longitude { get; set; }
+        public string Id { get; set; }
     }
 
     public class ManageLoginsViewModel

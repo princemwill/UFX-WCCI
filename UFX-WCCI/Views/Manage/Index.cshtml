@@ -5,15 +5,16 @@
 
 @*Need hidden input fields; input type=hidden
     instead of document.getelementById, look at forms and change value of form field. Its Id will be document.getElementById.Latitude?
-    *@
+*@
 
 <h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 
-    <h4>Change your account settings</h4>
-    <hr />
-    <dl class="dl-horizontal">
+
+<h4>Change your account settings</h4>
+<hr />
+<dl class="dl-horizontal">
     <dt>Password:</dt>
     <dd>
         [
@@ -26,47 +27,52 @@
             @Html.ActionLink("Create", "SetPassword")
         }
         ]
+        <br />
     </dd>
-    @using (Html.BeginForm("EditProfile", "Manage", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
+    <dd>
+      
 
-        @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-2" })
-        @Html.EditorFor(model => model.Bio, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
-
-        //photo upload code from B4B sample
-        @*<div>
-            <img src="~/AvatarFile?id=@Model.Id" width="200" height="200" />
-        </div>*@
-        <div class="form-group">
-            @Html.Label("Avatar", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" name="upload" id="Avatar" />
-                <br />
+        @using (Html.BeginForm("EditProfile", "Manage", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
             </div>
-        </div>
+
+            //photo upload code from B4B sample
+            <div class="form-group">
+                <div class="col-md-6">
+                    <p>Profile Picture</p>
+                    <img src="~/AvatarFile?id=@Model.Id" width="200" height="200" />
+                </div>
+                <div class="col-md-6">
+                    @Html.Label("Change Profile Picture", new { @class = "control-label" })
+                    <input type="file" name="upload" id="Avatar" />
+                    <br />
+                </div>
+            </div>
+
+            @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-6" })
+            @Html.EditorFor(model => model.Bio, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
+
 
         <!-- end Profile Picture -->
-        @*@Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })*@
-
-        @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label col-md-2" })
-        @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
-
-        @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
-
-        @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label col-md-2" })
-        @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="col-md-6 hide">
+                @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
+            
+                @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
             </div>
-        </div>
-    }
+
+
+  
+        }
+    </dd>
 
 
     @*
@@ -124,82 +130,82 @@
 
 @*Map info---------------------------------------------------------------------------*@
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2WGE1YtSTTOFpPzxqIzEpR6aF7liaQbU&callback=getLocation"
-            async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsT1NB4_Y4FwHcrXCKqRXell4s6rInvUg&callback=getLocation"
+        async defer></script>
 
 @*displays map and markers accordingly after running all code below*@
-    <div id="mapholder"></div>
+<div id="mapholder"></div>
 
-    <script>
-        //Finds users initial location based on device location
-        var x = document.getElementById("demo");
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition, showError);
-            } else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
-            }
+<script>
+    //Finds users initial location based on device location
+    var x = document.getElementById("demo");
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        latlon = new google.maps.LatLng(lat, lon)
+        mapholder = document.getElementById('mapholder')
+        mapholder.style.height = '250px';
+        mapholder.style.width = '500px';
+
+        //Pulls initial values from above function and displays them in Lat/Long boxes
+        document.getElementById("Latitude").value = lat;
+        document.getElementById("Longitude").value = lon;
+
+        //Finds user designated location by allowing user to drag pin/marker on map. overrides initial location
+
+        //Allows tweaking of map details and presentation (I think)
+        var myOptions = {
+            center: latlon, zoom: 14,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: false,
+            navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
         }
 
-        function showPosition(position) {
-            lat = position.coords.latitude;
-            lon = position.coords.longitude;
-            latlon = new google.maps.LatLng(lat, lon)
-            mapholder = document.getElementById('mapholder')
-            mapholder.style.height = '250px';
-            mapholder.style.width = '500px';
-            
-            //Pulls initial values from above function and displays them in Lat/Long boxes
-            document.getElementById("Latitude").value = lat;
-            document.getElementById("Longitude").value = lon;
+        var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+        //Code for marker and ability to drag marker to designate place
+        var marker = new google.maps.Marker({
+            position: latlon,
+            map: map,
+            draggable: true,
+            title: "You are here!"
+        });
+        google.maps.event.addListener(marker, 'dragend', function (a) {
+            console.log(a);
+            var ulat = a.latLng.lat();
+            var ulon = a.latLng.lng();
+            console.log(ulat);
+            console.log(ulon);
 
-            //Finds user designated location by allowing user to drag pin/marker on map. overrides initial location
-
-            //Allows tweaking of map details and presentation (I think)
-            var myOptions = {
-                center:latlon,zoom:14,
-                mapTypeId:google.maps.MapTypeId.ROADMAP,
-                mapTypeControl:false,
-                navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
-            }
-
-            var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-            //Code for marker and ability to drag marker to designate place
-            var marker = new google.maps.Marker({
-                position: latlon,
-                map: map,
-                draggable: true,
-                title: "You are here!"
-            });
-            google.maps.event.addListener(marker, 'dragend', function (a) {
-                console.log(a);
-                var ulat = a.latLng.lat();
-                var ulon = a.latLng.lng();
-                console.log(ulat);
-                console.log(ulon);
-             
-                //Pulls user selected values from above function and displays them in Lat/Long boxes
-                document.getElementById("Latitude").value = ulat;
-                document.getElementById("Longitude").value = ulon;
-            });
+            //Pulls user selected values from above function and displays them in Lat/Long boxes
+            document.getElementById("Latitude").value = ulat;
+            document.getElementById("Longitude").value = ulon;
+        });
 
 
+    }
+    //Error related code when user has no location or denies access
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
         }
-        //Error related code when user has no location or denies access
-        function showError(error) {
-            switch(error.code) {
-                case error.PERMISSION_DENIED:
-                    x.innerHTML = "User denied the request for Geolocation."
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    x.innerHTML = "Location information is unavailable."
-                    break;
-                case error.TIMEOUT:
-                    x.innerHTML = "The request to get user location timed out."
-                    break;
-                case error.UNKNOWN_ERROR:
-                    x.innerHTML = "An unknown error occurred."
-                    break;
-            }
-        }
-    </script>
+    }
+</script>
