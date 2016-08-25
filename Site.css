@@ -5,28 +5,33 @@
     padding-left: 15px;
     padding-right: 15px;
 }
-body{
+body {
     width: 100%;
-   /*background-color: #234b4a;*/
-   /*background-color: #F6F8F8;*/
-   /*background-color: #A0A2B6;*/
-   /*background-color: #6A8FB9;*/
-   background-color: #4e7d79;
- 
-   
+    /*background-color: #234b4a;*/
+    /*background-color: #F6F8F8;*/
+    /*background-color: #A0A2B6;*/
+    /*background-color: #6A8FB9;*/
+    /*background-color: #4e7d79;*/
+    background: url('/img-noise-361x370.png?background=#4e7d79ff&noise=626262&density=40&opacity=85');
 }
-.topleft{
-     /*background: url('http://rampages.us/kelseymcneill/wp-content/uploads/sites/5403/2015/04/New-York-Riverpark-Urban-Farm1.jpg');*/
-     background: url('http://www.motherearthnews.com/~/media/Images/MEN/Editorial/Blogs/Natural%20Health/The%20Future%20of%20Urban%20Gardening/NH-MA12eaglestreet-2593resized600X400.jpg');
-     background-repeat: no-repeat;
-     /*background-position: 0px -60px;*/
-     border-radius: 5px;
-     background-size: cover;
-     width: 750px;
-     height: 250px;
-     border: solid 2px #222222;
-     margin-top: 5px;
-     opacity: 0.8;
+.topleft {
+    /*background: url('http://rampages.us/kelseymcneill/wp-content/uploads/sites/5403/2015/04/New-York-Riverpark-Urban-Farm1.jpg');*/
+    /*background: url('http://www.motherearthnews.com/~/media/Images/MEN/Editorial/Blogs/Natural%20Health/The%20Future%20of%20Urban%20Gardening/NH-MA12eaglestreet-2593resized600X400.jpg');*/
+    /*background: url('urbanfarming2.jpg');*/
+    background-image: url('../urbanfarming3.jpg');
+    background-repeat: no-repeat;
+    /*background-position: 0px -60px;*/
+    /*border-radius: 5px;*/
+    background-size: cover;
+    width: 750px;
+    height: 250px;
+    border: solid 2px #222222;
+    margin-top: 5px;
+    /*opacity: 0.8;*/
+}
+.btn.btn-primary.btn-lg{
+    border: solid 1.7px #222222;
+    width: 160px
 }
 .topright{
     margin-top: 5px;
@@ -47,6 +52,7 @@ div.well.text-center{
     margin-right: 0 !important;
     margin-left: 0 !important;
     border: solid 1px #222222;
+    font-weight: bold;
 }
 .subheader{
     font-size: small;
