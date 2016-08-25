@@ -21,7 +21,7 @@ body {
     background-image: url('../urbanfarming3.jpg');
     background-repeat: no-repeat;
     /*background-position: 0px -60px;*/
-    /*border-radius: 5px;*/
+    border-radius: 5px;
     background-size: cover;
     width: 750px;
     height: 250px;
@@ -56,13 +56,17 @@ div.well.text-center{
     border: solid 1px #222222;
     font-weight: bold;
 }
+well.text.text-center{
+    padding-left: 0;
+    padding-right: 0;
+}
 .subheader{
     font-size: small;
     font-weight: bold;
     color: #fff;
 }
 .hr{
-    margin-top: 20px;
+    margin-top: 5px;
     margin-bottom: 10px;
     border-color: #222222;
 }
@@ -137,6 +141,16 @@ a.navbar-brand{
 }
 div.navbar-collapse.collapse{
     height: 50px !important;
+    margin-bottom: 0;
+    color: #4771AE;
+}
+.navbar.navbar-inverse.navbar-fixed-top{
+    background-color: #353837;
+    color: #4771AE;
+
+}
+nav.navbar-nav{
+    color: #4771AE;
 }
 
 /*.blogsearch{
