@@ -119,12 +119,106 @@
                 <!-- /.col-md-4 -->
                 <div class="col-md-4">
                     <h2>Heading 2</h2>
+
+
+
+
+
+
+
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsT1NB4_Y4FwHcrXCKqRXell4s6rInvUg&callback=getLocation"
+                            async defer></script>
+
+                    @*displays map and markers accordingly after running all code below*@
+                    <div id="mapholder"></div>
+
+                    <script>
+    //Finds users initial location based on device location
+    var x = document.getElementById("demo");
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        latlon = new google.maps.LatLng(lat, lon)
+        mapholder = document.getElementById('mapholder')
+        mapholder.style.height = '250px';
+        mapholder.style.width = '500px';
+
+        //Pulls initial values from above function and displays them in Lat/Long boxes
+        document.getElementById("Latitude").value = lat;
+        document.getElementById("Longitude").value = lon;
+
+        //Finds user designated location by allowing user to drag pin/marker on map. overrides initial location
+
+        //Allows tweaking of map details and presentation (I think)
+        var myOptions = {
+            center: latlon, zoom: 14,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: false,
+            navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
+        }
+
+        var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+        //Code for marker and ability to drag marker to designate place
+        var marker = new google.maps.Marker({
+            position: latlon,
+            map: map,
+            draggable: true,
+            title: "You are here!"
+        });
+        google.maps.event.addListener(marker, 'dragend', function (a) {
+            console.log(a);
+            var ulat = a.latLng.lat();
+            var ulon = a.latLng.lng();
+            console.log(ulat);
+            console.log(ulon);
+
+            //Pulls user selected values from above function and displays them in Lat/Long boxes
+            document.getElementById("Latitude").value = ulat;
+            document.getElementById("Longitude").value = ulon;
+        });
+
+
+    }
+    //Error related code when user has no location or denies access
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+        }
+    }
+                    </script>
+
+
+
+
+
+
+
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
                     <a class="btn btn-default" href="#">More Info</a>
                 </div>
                 <!-- /.col-md-4 -->
                 <div class="col-md-8">
                     <h2>Recent Posts</h2>
+
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
                     <a class="btn btn-default" href="#">More Info</a>
                 </div>
