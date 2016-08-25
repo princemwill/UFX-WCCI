@@ -16,12 +16,47 @@ body{
    
 }
 .topleft{
-     background: url('http://rampages.us/kelseymcneill/wp-content/uploads/sites/5403/2015/04/New-York-Riverpark-Urban-Farm1.jpg');
-     width: 500px;
-     height: 200px;
+     /*background: url('http://rampages.us/kelseymcneill/wp-content/uploads/sites/5403/2015/04/New-York-Riverpark-Urban-Farm1.jpg');*/
+     background: url('http://www.motherearthnews.com/~/media/Images/MEN/Editorial/Blogs/Natural%20Health/The%20Future%20of%20Urban%20Gardening/NH-MA12eaglestreet-2593resized600X400.jpg');
+     background-repeat: no-repeat;
+     /*background-position: 0px -60px;*/
+     border-radius: 5px;
+     background-size: cover;
+     width: 750px;
+     height: 250px;
+     border: solid 2px #222222;
+     margin-top: 5px;
+     opacity: 0.8;
 }
-h1.page-header{
+.topright{
+    margin-top: 5px;
+}
+/*h1.page-header{
     padding-top: 30px;
+}*/
+.headertext{
+    font-size: xx-large;
+    font-weight: bold;
+    opacity: 1;
+}
+div.well.text-center{
+    background-color: #F6F8F8;
+    margin-top: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    border: solid 1px #222222;
+}
+.subheader{
+    font-size: small;
+    font-weight: bold;
+    color: #fff;
+}
+.hr{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-color: #222222;
 }
 
 .smallheader{
@@ -40,14 +75,14 @@ h1.page-header{
     padding-top: 100px;
     float: right;
 }
-.toprowright{
+/*.toprowright{
     margin-top: 115px;
-}
+}*/
 .pager{
     margin-top: 10px;
     padding-top: 10px;
 }
-div.jumbotron{
+/*div.jumbotron{
     width: 100% !important;
     height: 200px;
     padding-left: 0 !important;
@@ -58,7 +93,7 @@ div.jumbotron{
     background-size: cover;
     background-repeat: no-repeat;
     border: solid 1px white;
-}
+}*/
 .frontpageh2{
     color: #4D753D; /*greenish color*/
     /*color: #353F7D;*/
@@ -69,9 +104,9 @@ div.jumbotron{
 .dl-horizontal dt {
     white-space: normal;
 }
-.img-responsive img-rounded{
+/*.img-responsive img-rounded{
     background: url('http://rampages.us/kelseymcneill/wp-content/uploads/sites/5403/2015/04/New-York-Riverpark-Urban-Farm1.jpg');
-}
+}*/
 div.row.toprowright{
         background: url('http://rampages.us/kelseymcneill/wp-content/uploads/sites/5403/2015/04/New-York-Riverpark-Urban-Farm1.jpg');
         width: 700px;
@@ -95,6 +130,7 @@ a.navbar-brand{
 div.navbar-collapse.collapse{
     height: 50px !important;
 }
+
 /*.blogsearch{
     margin-top: 40px;
 }*/
