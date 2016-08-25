@@ -1,0 +1,100 @@
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+body{
+    width: 100%;
+   /*background-color: #234b4a;*/
+   /*background-color: #F6F8F8;*/
+   /*background-color: #A0A2B6;*/
+   /*background-color: #6A8FB9;*/
+   background-color: #4e7d79;
+ 
+   
+}
+.topleft{
+     background: url('http://rampages.us/kelseymcneill/wp-content/uploads/sites/5403/2015/04/New-York-Riverpark-Urban-Farm1.jpg');
+     width: 500px;
+     height: 200px;
+}
+h1.page-header{
+    padding-top: 30px;
+}
+
+.smallheader{
+    font-size: small;
+}
+.post{
+    float: left;
+}
+.find{
+    float: right;
+}
+/*div.well{
+    margin-top: 50px;
+}*/
+.biztagline{
+    padding-top: 100px;
+    float: right;
+}
+.toprowright{
+    margin-top: 115px;
+}
+.pager{
+    margin-top: 10px;
+    padding-top: 10px;
+}
+div.jumbotron{
+    width: 100% !important;
+    height: 200px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    background: url("http://www.motherearthnews.com/~/media/Images/MEN/Editorial/Blogs/Natural%20Health/The%20Future%20of%20Urban%20Gardening/NH-MA12eaglestreet-2593resized600X400.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: solid 1px white;
+}
+.frontpageh2{
+    color: #4D753D; /*greenish color*/
+    /*color: #353F7D;*/
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+.img-responsive img-rounded{
+    background: url('http://rampages.us/kelseymcneill/wp-content/uploads/sites/5403/2015/04/New-York-Riverpark-Urban-Farm1.jpg');
+}
+div.row.toprowright{
+        background: url('http://rampages.us/kelseymcneill/wp-content/uploads/sites/5403/2015/04/New-York-Riverpark-Urban-Farm1.jpg');
+        width: 700px;
+        height: 300px;
+
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+a.navbar-brand{
+    float: left;
+}
+.posts{
+    margin-top: 0;
+ 
+}
+div.navbar-collapse.collapse{
+    height: 50px !important;
+}
+/*.blogsearch{
+    margin-top: 40px;
+}*/
