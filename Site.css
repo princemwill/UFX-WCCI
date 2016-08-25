@@ -31,7 +31,8 @@ body {
 }
 .btn.btn-primary.btn-lg{
     border: solid 1.7px #222222;
-    width: 160px
+    width: 160px;
+    background-color: #4771AE;
 }
 .topright{
     margin-top: 5px;
@@ -45,7 +46,8 @@ body {
     opacity: 1;
 }
 div.well.text-center{
-    background-color: #F6F8F8;
+    /*background-color: #F6F8F8;*/
+    background-color: #789F86;
     margin-top: 0;
     padding-left: 0 !important;
     padding-right: 0 !important;
