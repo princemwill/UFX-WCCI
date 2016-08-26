@@ -11,7 +11,7 @@
     <title></title>
 </head>
 <body>
-    <div>
+    <div class="col-md-6">
         <br />
         <br />
         <br />
@@ -28,11 +28,11 @@
                 };
                 if (isFollowing){
                     var following = document.getElementById("follow");
-                    following.className = 'hide';
+                    following.setAttribute('class','hide');
                 }
                 else{
                     var following = document.getElementById("unfollow");
-                    following.className = "hide";
+                    following.setAttribute('class','hide');
                 };
             </script>
 
@@ -60,10 +60,71 @@
             @Model.Longitude
         </div>
 
+        // display map 
+        <div id="map_canvas" style="width:425px; height:550px;"></div>
     </div>
 
+    // where the posts would go
+    <div class="col-md-6">
+        <table class="table">
+            <tr>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Photo
+                </th>
+                <th>
+                    Posting Time
+                </th>
+            </tr>
 
-    <div id="map_canvas" style="width:425px; height:550px;"></div>
+
+            foreach (var item in @Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.ActionLink(item.AppUser.UserName, "UserProfile", "Postings", new { id = item.AppUser.Id }, null)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Desc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @*Code from Olay tutorial to display image. Needs its own contoller to fully function*@
+                        <img src="~/PostFile?id=@item.PostingID" width="75" height="75" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostingTime)
+                    </td>
+                    <td>
+
+                        @if (item.AppUser == ViewBag.CurrentUser)
+                        {
+                            <span> @Html.ActionLink("Edit", "Edit", new { id = item.PostingID }) |</span>
+
+                            <span>@Html.ActionLink("Delete", "Delete", new { id = item.PostingID })</span>
+                        }
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
 
     <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyBsT1NB4_Y4FwHcrXCKqRXell4s6rInvUg"></script>
     <script type="text/javascript">
