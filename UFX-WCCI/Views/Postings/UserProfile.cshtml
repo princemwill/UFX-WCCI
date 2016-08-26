@@ -17,6 +17,35 @@
         <br />
         @Model.UserName
         <br />
+        <div>
+            <script>
+                var isFollowing = false;
+                @foreach(var follow in Model.Following){
+                    if (Model == follow)
+                    {
+                        @:isFollowing = true;
+                                    };
+                };
+                if (isFollowing){
+                    var following = document.getElementById("follow");
+                    following.className = 'hide';
+                }
+                else{
+                    var following = document.getElementById("unfollow");
+                    following.className = "hide";
+                };
+            </script>
+
+            <div id="follow">
+                @Html.ActionLink("Follow", "AddFollowing", "Postings", new { id = Model.Id }, null)
+            </div>
+            <div id="unfollow">
+                @Html.ActionLink("UnFollow", "DeleteFollowing", "Postings", new { id = Model.Id }, null)
+            </div>
+
+
+        </div>
+        <br />
         <img src="~/AvatarFile?id=@Model.Id" width="200" height="200" />
         <br />
         @Model.Bio

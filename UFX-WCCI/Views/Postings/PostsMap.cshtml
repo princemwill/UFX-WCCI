@@ -21,7 +21,7 @@
     initialize();
 
     $.each(userMarkers, function(index,Marker) {
-        @*$('#userpostings .list').append('<li><h3 class="name">@Html.ActionLink('+Marker.userName+',"UserProfile", "Postings",new { id = '+Marker.userID+' },null)</h3></li>');*@
+        $('#userpostings .list').append('<li><span>@@Html.ActionLink(@@'+Marker.userName+',"UserProfile", "Postings",new { id = @@'+Marker.userId+' },null)</span></li>');
             });
 
     //Html.ActionLink(item.AppUser.UserName, "UserProfile", "Postings", new { id = item.AppUser.Id }, null)
