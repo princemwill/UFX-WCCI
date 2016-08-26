@@ -27,6 +27,23 @@ namespace UFX_WCCI.Controllers
             }
 
         }
+        public ActionResult AddFollowing(string Id)
+        {
+            ApplicationUser user = db.Users.Find(Id);
+            ApplicationUser loggedInUser = CurrentUser;
+            loggedInUser.Following.Add(user);
+
+            return RedirectToAction("UserProfile", user);
+        }
+
+        public ActionResult DeleteFollowing(string Id)
+        {
+            ApplicationUser user = db.Users.Find(Id);
+            ApplicationUser loggedInUser = CurrentUser;
+            loggedInUser.Following.Remove(user);
+
+            return RedirectToAction("UserProfile", user);
+        }
         public ActionResult UserProfile(string Id)
         {
             ApplicationUser user = db.Users.Find(Id);
