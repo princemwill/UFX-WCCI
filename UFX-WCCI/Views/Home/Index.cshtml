@@ -2,7 +2,10 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <link href="~/Content/W3.css" rel="stylesheet" />
+</head>
 
 <div class="jumbotron">
     <h1>Urban Farmer Xchange</h1>
@@ -11,66 +14,40 @@
 </div>
 
 
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AppUser.UserName)
-        </th>
-        <th>
-            Photo
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Desc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </th>
-      
-        <th>
-            @Html.DisplayNameFor(model => model.PostingTime)
-        </th>
-    </tr>
 
     @Html.ActionLink("Show Map", "PostsMap", "Postings")
 
+
+
     @foreach (var item in Model)
     {
-        <tr>
 
-            <td>
-                @Html.ActionLink(item.AppUser.UserName, "UserProfile", "Postings", new { id = item.AppUser.Id }, null)
+        
+        <body class="w3-container">
 
-            </td>
-            <td>
-                @*Code from Olay tutorial to display image. Needs its own contoller to fully function*@
-                <img src="~/PostFile?id=@item.PostingID" width="75" height="75" />
-            </td>
+            <h2>Card Example</h2>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Desc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-           
-            <td>
-                @Html.DisplayFor(modelItem => item.PostingTime)
-            </td>
-            <td>
+            <div class="w3-card-4" style="width:100%">
 
-                @if (item.AppUser == ViewBag.CurrentUser)
-                {
-                    <span> @Html.ActionLink("Edit", "Edit", new { id = item.PostingID }) |</span>
+                <header class="w3-container w3-light-grey">
+                    <h3>John Doe</h3>
+                </header>
 
-                    <span>@Html.ActionLink("Delete", "Delete", new { id = item.PostingID })</span>
-                }
-            </td>
-        </tr>
+                <div class="w3-container">
+                    <p>Price</p><p>Quantity</p>
+                    <hr>
+                    <img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                    <p>CEO at Mighty Schools. Marketing and Advertising. Seeking a new job and new opportunities.</p><br>
+                </div>
+
+                <button class="w3-btn-block w3-dark-grey">+ Connect</button>
+
+            </div>
+        </body>
+
+
     }
-</table>
+
+
+
+
