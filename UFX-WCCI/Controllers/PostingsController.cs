@@ -30,8 +30,8 @@ namespace UFX_WCCI.Controllers
         public ActionResult AddFollowing(string Id)
         {
             ApplicationUser user = db.Users.Find(Id);
-            ApplicationUser loggedInUser = CurrentUser;
-            loggedInUser.Following.Add(user);
+            CurrentUser.Following.Add(user);
+            db.SaveChanges();
 
             return RedirectToAction("UserProfile", user);
         }
@@ -39,14 +39,16 @@ namespace UFX_WCCI.Controllers
         public ActionResult DeleteFollowing(string Id)
         {
             ApplicationUser user = db.Users.Find(Id);
-            ApplicationUser loggedInUser = CurrentUser;
-            loggedInUser.Following.Remove(user);
+            CurrentUser.Following.Remove(user);
+            db.SaveChanges();
 
             return RedirectToAction("UserProfile", user);
         }
         public ActionResult UserProfile(string Id)
         {
             ApplicationUser user = db.Users.Find(Id);
+            ViewBag.UserFollowing = CurrentUser.Following.Count;
+            ViewBag.CurrentUser = CurrentUser;
 
             return View(user);
             //return RedirectToAction("Profile", user);
@@ -100,9 +102,8 @@ namespace UFX_WCCI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PostingID,Price,Desc,Quantity")] Posting posting, HttpPostedFileBase upload)
         {
-            posting.AppUser = CurrentUser;
             posting.PostingTime = DateTime.Now;
-            CurrentUser.Posts.Add(posting);
+            
 
             if (ModelState.IsValid)
             {
@@ -120,7 +121,7 @@ namespace UFX_WCCI.Controllers
 
                 }
                 //save posting to the database
-                db.Postings.Add(posting);
+                CurrentUser.Posts.Add(posting);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
