@@ -12,6 +12,30 @@
 
 
 <table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AppUser.UserName)
+        </th>
+        <th>
+            Photo
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Desc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.PostingTime)
+        </th>
+    </tr>
+
+    @Html.ActionLink("Show Map", "PostsMap", "Postings")
+
     @foreach (var item in Model)
     {
         <tr>
