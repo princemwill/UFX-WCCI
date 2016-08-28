@@ -41,7 +41,8 @@
 						images: {
 						    'https://upload.wikimedia.org/wikipedia/commons/3/3d/New_crops-Chicago_urban_farm.jpg': 'center',
 						    'https://c1.staticflickr.com/5/4047/4619312141_9abf7058b2_b.jpg': 'center',
-							//'images/bg03.jpg': 'center'
+						    'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/City_farm_in_chicago.jpg/2322px-City_farm_in_chicago.jpg': 'center'
+						    //https://i.imgsafe.org/35f509cdb5.jpg//
 						},
 
 

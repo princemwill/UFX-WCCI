@@ -247,6 +247,7 @@
     <Content Include="ie9.css" />
     <Content Include="images\bg01.jpg" />
     <Content Include="images\bg02.jpg" />
+    <Content Include="images\cityfarmimage4.jpg" />
     <Content Include="main.css" />
     <Content Include="main.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
