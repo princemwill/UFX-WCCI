@@ -1,0 +1,27 @@
+﻿body{
+    /*background: url('https://upload.wikimedia.org/wikipedia/commons/3/3d/New_crops-Chicago_urban_farm.jpg') !important;*/
+    background-position: 0px -80px !important;
+}
+.buttons{
+    width: 160px;
+    background-color: #293541;
+    opacity: 0.8;
+}
+.footer{
+    font-size: xx-small !important;
+}
+h1{
+    font-family: 'Allerta Stencil', sans-serif !important;
+    font-weight: 200;
+}
+p{
+    color: #fff !important;
+    font-weight: bold !important;
+
+}
+div.container.body-content{
+    margin-left: 0 !important;
+}
+body > div.navbar.navbar-inverse.navbar-fixed-top{
+    height: 50px;
+}

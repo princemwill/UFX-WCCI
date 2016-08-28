@@ -236,11 +236,19 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\splashpage.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
+    <Content Include="font-awesome.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ie8.css" />
+    <Content Include="ie9.css" />
+    <Content Include="images\bg01.jpg" />
+    <Content Include="images\bg02.jpg" />
+    <Content Include="main.css" />
+    <Content Include="main.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -303,6 +311,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Postings\PostsMap.cshtml" />
+    <Content Include="_bg.scss" />
+    <Content Include="_page.scss" />
+    <Content Include="_typography.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -324,6 +335,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608161836052_Initial.resx">
       <DependentUpon>201608161836052_Initial.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608191513494_usernameLogin_BioFixes_PhotoUplaod.resx">
       <DependentUpon>201608191513494_usernameLogin_BioFixes_PhotoUplaod.cs</DependentUpon>

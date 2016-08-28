@@ -3,213 +3,84 @@
     ViewBag.Title = "Manage";
 }
 
+@*@ViewBag.HideNavBar = true;*@
+
 @*Need hidden input fields; input type=hidden
     instead of document.getelementById, look at forms and change value of form field. Its Id will be document.getElementById.Latitude?
 *@
 
-<h2>@ViewBag.Title.</h2>
-
-<p class="text-success">@ViewBag.StatusMessage</p>
-
-
-<h4>Change your account settings</h4>
-<hr />
-<dl class="dl-horizontal">
-    <dt>Password:</dt>
-    <dd>
-        [
-        @if (Model.HasPassword)
-            {
-            @Html.ActionLink("Change your password", "ChangePassword")
-        }
-        else
-        {
-            @Html.ActionLink("Create", "SetPassword")
-        }
-        ]
-        <br />
-    </dd>
-    <dd>
-
-
-        @using (Html.BeginForm("EditProfile", "Manage", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            <div class="form-group">
-                <div class="col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </div>
-
-            //photo upload code from B4B sample
-            <div class="form-group">
-                <div class="col-md-6">
-                    <p>Profile Picture</p>
-                        <img src="~/AvatarFile?id=@Model.Id" width="200" height="200" />
-                </div>
-                <div class="col-md-6">
-                    @Html.Label("Change Profile Picture", new { @class = "control-label" })
-                    <input type="file" name="upload" id="Avatar" />
-                    <br />
-                </div>
-            </div>
-
-            @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-6" })
-                        @Html.EditorFor(model => model.Bio, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
-
-
-        <!-- end Profile Picture -->
-                        <div class="col-md-6 hide">
-                            @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
-
-                            @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
-                        </div>
 
 
 
-                        }
-    </dd>
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <title>Eventually by HTML5 UP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link href="~/Content/splashpage.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+
+    <link href="~/main.css" rel="stylesheet" />
+
+
+    <link href="~/ie8.css" rel="stylesheet" />
+    
+
+
+    <script src="~/main.js"></script>
+
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+</head>
+<body>
 
 
 
+    <!-- Header -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        </div>
+        <header id="header">
+            <h1>UFX</h1>
+            <p>
+                Urban Farmer Exchange: find and trade with growers near you. 
+            </p>
+        </header>
 
-</dl>
-
-
-@*Map info---------------------------------------------------------------------------*@
-@*displays map and markers accordingly after running all code below*@
-<div class="col-md-6" id="mapholder"></div>
-
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsT1NB4_Y4FwHcrXCKqRXell4s6rInvUg&callback=getLocation"
-        defer></script>
-@*<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyBsT1NB4_Y4FwHcrXCKqRXell4s6rInvUg"></script>*@
-<script type="text/javascript">
-
-
-    var map;
-    var markers = [];
-    var newposition = false;
-
-
-    initialize();
-    getLocation();
-
-    function initialize() {
-
-        //navigator.geolocation;
-        //navigator.geolocation.getCurrentPosition();
+        <!-- Signup Form -->
+        @*<form id="signup-form" method="post" action="#">
+            <input type="email" name="email" id="email" placeholder="Email Address" />
+            <input type="submit" value="Post" />
+            <input type="submit" value="Find" />
+        </form>*@
+    @*<button type="submit" value="Post"></button>
+    <button type="submit" value="Find"></button>*@
+    <button class="buttons" type="button">Post</button>
+    <button class="buttons" type="button">Find</button>
 
 
-        //if no lat/lon entered get current coords, otherwise get from user profile
-        if (@Model.Latitude == 0){
-            lat = 41.1618538;
-            lon = -80.69716;
-            newposition = true;
-        }
-        else {
-            lat = @Model.Latitude;
-            lon = @Model.Longitude;
-        };
-
-        var myOptions = {
-            zoom: 10,
-            center: new google.maps.LatLng(lat,lon),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-
-        map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-
-        addMarker(new google.maps.LatLng(lat, lon), "You are here!");
-    }
-
-    function addMarker(latlng, myTitle) {
-        markers.push(new google.maps.Marker({
-            position: latlng,
-            map: map,
-            title: myTitle,
-            icon: "https://maps.google.com/mapfiles/marker" + String.fromCharCode(markers.length + 65) + ".png"
-        }));
-    }
-
-    //Finds users initial location based on device location
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition, showError);
-        } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
-
-    function showPosition(position) {
-        if (newposition){
-            lat = 41.1618538;
-            lon = -80.69716;
-        }
-        else
-        {
-            lat = @Model.Latitude;
-            lon = @Model.Longitude;
-        };
-        latlon = new google.maps.LatLng(lat, lon)
-        mapholder = document.getElementById('mapholder')
-        mapholder.style.height = '250px';
-        mapholder.style.width = '500px';
-
-        //Pulls initial values from above function and displays them in Lat/Long boxes
-        document.getElementById("Latitude").value = lat;
-        document.getElementById("Longitude").value = lon;
-
-        //Finds user designated location by allowing user to drag pin/marker on map. overrides initial location
-
-        //Allows tweaking of map details and presentation (I think)
-        var myOptions = {
-            center: latlon, zoom: 10,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            mapTypeControl: false,
-            navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
-        }
-
-        var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-        //Code for marker and ability to drag marker to designate place
-        var marker = new google.maps.Marker({
-            position: latlon,
-            map: map,
-            draggable: true,
-            title: "You are here!"
-        });
-        google.maps.event.addListener(marker, 'dragend', function (a) {
-            console.log(a);
-            var ulat = a.latLng.lat();
-            var ulon = a.latLng.lng();
-            console.log(ulat);
-            console.log(ulon);
-
-            //Pulls user selected values from above function and displays them in Lat/Long boxes
-            document.getElementById("Latitude").value = ulat;
-            document.getElementById("Longitude").value = ulon;
-        });
+        <!-- Footer -->
+        <!--<footer id="footer">
+            <ul class="icons">
+                <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                <li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+            </ul>
+            <ul class="copyright">
+                <li>&copy; Untitled.</li>
+                <li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </footer> /-->
 
 
-    }
-    //Error related code when user has no location or denies access
-    function showError(error) {
-        switch (error.code) {
-            case error.PERMISSION_DENIED:
-                x.innerHTML = "User denied the request for Geolocation."
-                break;
-            case error.POSITION_UNAVAILABLE:
-                x.innerHTML = "Location information is unavailable."
-                break;
-            case error.TIMEOUT:
-                x.innerHTML = "The request to get user location timed out."
-                break;
-            case error.UNKNOWN_ERROR:
-                x.innerHTML = "An unknown error occurred."
-                break;
-        }
-    }
-</script>
+
+    @*<footer>Credits: <a href="http://html5up.net">HTML5 UP</a></footer>*@
+
+        <!-- Scripts -->
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="~/main.js"></script>
+</body>
+</html>
