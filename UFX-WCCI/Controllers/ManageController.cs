@@ -89,7 +89,9 @@ namespace UFX_WCCI.Controllers
 
                 Latitude = user.Latitude,
                 Longitude = user.Longitude,
-                Id = user.Id
+                Id = user.Id,
+                PhotoName = user.PhotoName
+
             };
             return View(model);
         }
