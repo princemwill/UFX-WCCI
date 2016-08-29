@@ -44,11 +44,21 @@
             <div class="form-group">
                 <div class="col-md-6">
                     <p>Profile Picture</p>
+
                     <img src="~/AvatarFile?id=@Model.Id" width="200" height="200" />
+
                 </div>
                 <div class="col-md-6">
                     @Html.Label("Change Profile Picture", new { @class = "control-label" })
-                    <input type="file" name="upload" id="Avatar" />
+
+                    <input type="file" name = "upload" accept="image/*" id="Avatar" onchange="loadFile(event)">
+
+                    <script>
+                        var loadFile = function(event) {
+                            var output = document.getElementById('output');
+                            output.src = URL.createObjectURL(event.target.files[0]);
+                        };
+                    </script>
                     <br />
                 </div>
             </div>
@@ -167,9 +177,9 @@
 
         //Allows tweaking of map details and presentation (I think)
         var myOptions = {
-            center: latlon, zoom: 10,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            mapTypeControl: false,
+
+            center: latlon, zoom: 14,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,            
             navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
         }
 

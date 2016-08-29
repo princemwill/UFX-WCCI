@@ -20,12 +20,11 @@
 
     initialize();
 
-    $.each(userMarkers, function(index,Marker) {
-        $('#userpostings .list').append('<li><span>@@Html.ActionLink(@@'+Marker.userName+',"UserProfile", "Postings",new { id = @@'+Marker.userId+' },null)</span></li>');
-            });
+    $.each(userMarkers, function(index,Marker) {      
+        $('#userpostings .list').append('<li><span><a href="/Postings/UserProfile?id=' + Marker.userId + '">' + Marker.userName + '</span></li>')});
 
-    //Html.ActionLink(item.AppUser.UserName, "UserProfile", "Postings", new { id = item.AppUser.Id }, null)
-
+    //$('#userpostings .list').append('<li><span>@@Html.ActionLink(@@'+Marker.userName+',"UserProfile", "Postings",new { id = @@'+Marker.userId+' },null)</span></li>');
+    //    });
 
         function initialize() {
             var myOptions = {
