@@ -17,20 +17,18 @@
 
     @Html.ActionLink("Show Map", "PostsMap", "Postings")
 
-
-
+<h2>Produce Posts</h2>
     @foreach (var item in Model)
     {
-
-        
-        <body class="w3-container">
-
-            <h2>Produce Posts</h2>
+                
+        <body class="w3-container">            
 
             <div class="w3-card-4" style="width:40%">
 
                 <header class="w3-container w3-light-grey">
-                    <h3>@item.AppUser.UserName</h3>
+                    <h3>
+                        @Html.ActionLink(item.AppUser.UserName, "UserProfile", "Postings", new { id = item.AppUser.Id }, null)                        
+                    </h3>
                 </header>
 
                 <div class="w3-container">
