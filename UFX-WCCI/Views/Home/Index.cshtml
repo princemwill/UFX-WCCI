@@ -90,35 +90,38 @@
 
 
 <h2>Produce Posts</h2>
-
-@foreach (var user in Model) {
-    foreach (var item in user.Posts)
+<div class="w3-row">
+@foreach (var user in Model)
     {
+        foreach (var item in user.Posts)
+        {
+        <div class="w3-half w3-container">
 
-        <body class="w3-container">            
+                <div class="w3-card-4" style="margin-bottom: 20px;">
 
-            <div class="w3-card-4" style="width:40%">
+                    <header class="w3-container w3-light-grey">
+                        <h3>
+                            @Html.ActionLink(item.AppUser.UserName, "UserProfile", "Postings", new { id = item.AppUser.Id }, null)
+                        </h3>
+                    </header>
 
-                <header class="w3-container w3-light-grey">
-                    <h3>
-                        @Html.ActionLink(item.AppUser.UserName, "UserProfile", "Postings", new { id = item.AppUser.Id }, null)                        
-                    </h3>
-                </header>
-
-                <div class="w3-container">
-                    <div class="w3-row-padding w3-container">
-                        <p class="w3-half w3-container">Price: @item.Price</p><p class="w3-half w3-container">Quantity: @item.Quantity</p>
+                    <div class="w3-container">
+                        <div class="w3-row-padding w3-container">
+                            <p class="w3-half w3-container">Price: @item.Price</p><p class="w3-half w3-container">Quantity: @item.Quantity</p>
+                        </div>
+                        <hr>
+                        <img src="~/PostFile?id=@item.PostingID" alt="Post Picture" class="w3-left w3-accordion w3-margin-right" style="width:60px" />
+                        @*<img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">*@
+                        <p>@item.Desc</p><br>
                     </div>
-                    <hr>
-                    <img src="~/PostFile?id=@item.PostingID" alt="Post Picture" class="w3-left w3-accordion w3-margin-right" style="width:60px"/>
-                    @*<img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">*@
-                    <p>@item.Desc</p><br>
-                </div>
-                <p class="w3-dark-grey"> @item.PostingTime.DayOfWeek, @item.PostingTime.Month/@item.PostingTime.Day @item.PostingTime.Hour:@item.PostingTime.Minute </p>
-                                
-            </div>
-        </body>
+                    <p class="w3-dark-grey"> @item.PostingTime.DayOfWeek, @item.PostingTime.Month/@item.PostingTime.Day @item.PostingTime.Hour:@item.PostingTime.Minute </p>
 
-        }
+                </div>
+        </div>
+        
+
     }
+}
+</div>
+
 
