@@ -1,4 +1,5 @@
-﻿@model IEnumerable<UFX_WCCI.Models.Posting>
+﻿@model IEnumerable<UFX_WCCI.Models.ApplicationUser>
+
 @{
     ViewBag.Title = "Home Page";
 }
@@ -7,18 +8,97 @@
     <link href="~/Content/W3.css" rel="stylesheet" />
 </head>
 
-<div class="jumbotron">
+@*<div class="jumbotron">
     <h1>Urban Farmer Xchange</h1>
     <p class="lead">Like craigslist for gardeners</p>
     <p><a href="https://localhost:44377/Postings" class="btn btn-primary btn-lg">Postings </a></p>
+</div>*@
+
+
+<div>
+    <div id="map_canvas" class="col-md-12" style="height:550px;"></div>
+    @*<div id="userpostings" class="col-md-6" style="padding-top:40px;">
+        <ol type="A" class="list"></ol>
+    </div>*@
+
 </div>
 
-    @Html.ActionLink("Show Map", "PostsMap", "Postings")
+@section Scripts{
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyBsT1NB4_Y4FwHcrXCKqRXell4s6rInvUg"></script>
+    <script type="text/javascript">
+
+
+    var map;
+    var markers = [];
+    //var userMarkers = [];
+
+    initialize();
+
+    //$.each(userMarkers, function(index,Marker) {
+    //    $('#userpostings .list').append('<li><span><a href="/Postings/UserProfile?id=' + Marker.userId + '">' + Marker.userName + '</span></li>')});
+
+    //$.each(userMarkers,google.maps.event.addListener(Marker, 'click', function() {
+    //    window.location.href = '/Postings/UserProfile?id=' + Marker.userId + '">' + Marker.userName + '</span></li>';
+    //}));
+
+    $.each(markers, function(index, marker) {
+        marker.addListener('click', function() {
+            window.location.href = this.url;
+        });
+    });
+
+        //$.each(markers,google.maps.event.addListener(marker, 'click', function() {
+        //    window.location.href = this.url;
+        //}));
+
+    //$('#userpostings .list').append('<li><span>@@Html.ActionLink(@@'+Marker.userName+',"UserProfile", "Postings",new { id = @@'+Marker.userId+' },null)</span></li>');
+    //    });
+
+        function initialize() {
+            var myOptions = {
+                zoom: 10,
+                center: new google.maps.LatLng(@ViewBag.CurrentUser.Latitude,@ViewBag.CurrentUser.Longitude),
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                clickableIcons:true
+            }
+
+            map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+            var i = 0;
+
+            @foreach (var user in Model) {
+                   @:addMarker(new google.maps.LatLng(@user.Latitude, @user.Longitude), "@user.UserName","@user.Id");
+
+                    @*foreach(var post in user.Posts){
+                        @:userMarkers[i].userPosts.push(@Html.Raw(Json.Encode(new { item = post.Desc, quantity = post.Quantity })));
+                                }
+                    @:i++;*@
+                            }
+        }
+
+        function addMarker(latlng, myTitle,userId) {
+            markers.push(new google.maps.Marker({
+                position: latlng,
+                map: map,
+                title: myTitle,
+                icon: "https://maps.google.com/mapfiles/marker" + String.fromCharCode(markers.length + 65) + ".png",
+                url:'/Postings/UserProfile?id=' + userId 
+            }));
+
+
+        }
+
+    </script>
+}
+
+
+
 
 <h2>Produce Posts</h2>
-    @foreach (var item in Model)
+
+@foreach (var user in Model) {
+    foreach (var item in user.Posts)
     {
-                
+
         <body class="w3-container">            
 
             <div class="w3-card-4" style="width:40%">
@@ -41,6 +121,6 @@
             </div>
         </body>
 
-
+        }
     }
 
