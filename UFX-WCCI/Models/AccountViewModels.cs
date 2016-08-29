@@ -8,6 +8,8 @@ namespace UFX_WCCI.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        public string UserName { get; set; }
+        //public string UserName { get; internal set; }
     }
 
     public class ExternalLoginListViewModel
