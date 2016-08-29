@@ -1,43 +1,35 @@
-﻿@*@Using UFX_WCCI.Models*@
-@model UFX_WCCI.Models.ApplicationUser
+﻿@model UFX_WCCI.Models.ApplicationUser
 
 
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
+    <div class="col-md-6">
         <br />
         <br />
         <br />
         @Model.UserName
         <br />
         <div>
-               @if (ViewBag.UserFollowing != 0)
-               {
-                   if (ViewBag.CurrentUser.Following.Contains(Model))
-                   {
+            @if (ViewBag.UserFollowing != 0)
+            {
+                if (ViewBag.CurrentUser.Following.Contains(Model))
+                {
                     <div id="unfollow">
                         @Html.ActionLink("UnFollow", "DeleteFollowing", "Postings", new { id = Model.Id }, null)
                     </div>
-                   }
-                   else {
+                }
+                else {
                     <div id="follow">
                         @Html.ActionLink("Follow", "AddFollowing", "Postings", new { id = Model.Id }, null)
                     </div>
-                   }
-               }
-               else
-               {
+                }
+            }
+            else
+            {
                 <div id="follow">
                     @Html.ActionLink("Follow", "AddFollowing", "Postings", new { id = Model.Id }, null)
                 </div>
-               }
+            }
         </div>
         <br />
         <img src="~/AvatarFile?id=@Model.Id" width="200" height="200" />
@@ -54,42 +46,62 @@
             @Model.Longitude
         </div>
 
-    </div>
 
 
-    <div id="map_canvas" style="width:425px; height:550px;"></div>
 
-    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyBsT1NB4_Y4FwHcrXCKqRXell4s6rInvUg"></script>
-    <script type="text/javascript">
+        <div id="map_canvas" style="width:425px; height:550px;"></div>
 
-
-        var map;
-        var markers = [];
+        <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyBsT1NB4_Y4FwHcrXCKqRXell4s6rInvUg"></script>
+        <script type="text/javascript">
 
 
-        initialize();
+            var map;
+            var markers = [];
 
-        function initialize() {
 
-            var myOptions = {
-                zoom: 10,
-                center: new google.maps.LatLng(@Model.Latitude,@Model.Longitude),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+            initialize();
+
+            function initialize() {
+
+                var myOptions = {
+                    zoom: 10,
+                    center: new google.maps.LatLng(@Model.Latitude,@Model.Longitude),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+                map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+                addMarker(new google.maps.LatLng(@Model.Latitude, @Model.Longitude), "User");
             }
-            map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
-            addMarker(new google.maps.LatLng(@Model.Latitude, @Model.Longitude), "User");
+            function addMarker(latlng, myTitle) {
+                markers.push(new google.maps.Marker({
+                    position: latlng,
+                    map: map,
+                    title: myTitle,
+                    icon: "https://maps.google.com/mapfiles/marker" + String.fromCharCode(markers.length + 65) + ".png"
+                }));
+            }
+
+        </script>
+    </div>
+    <div class="col-md-6">
+        <br />
+        <br />
+        <br />
+        @foreach (var item in Model.Posts)
+        {
+
+            <div class="w3-card-4" style="width:40%">
+
+                <div class="w3-container">
+                    <p>Price: @item.Price</p><p>Quantity: @item.Quantity</p>
+                    <hr>
+                    <img src="~/PostFile?id=@item.PostingID" alt="Post Picture" class="w3-left w3-accordion w3-margin-right" style="width:60px" />
+                    @*<img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">*@
+                    <p>@item.Desc</p><br>
+                </div>
+                <p class="w3-dark-grey"> @item.PostingTime.DayOfWeek, @item.PostingTime.Month/@item.PostingTime.Day @item.PostingTime.Hour:@item.PostingTime.Minute </p>
+
+            </div>
         }
-
-        function addMarker(latlng, myTitle) {
-            markers.push(new google.maps.Marker({
-                position: latlng,
-                map: map,
-                title: myTitle,
-                icon: "https://maps.google.com/mapfiles/marker" + String.fromCharCode(markers.length + 65) + ".png"
-            }));
-        }
-
-    </script>
-</body>
-</html>
+    </div>

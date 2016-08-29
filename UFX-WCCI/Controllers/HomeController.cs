@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,12 +11,23 @@ namespace UFX_WCCI.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationUser CurrentUser
+        {
+
+            get
+            {
+                UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+                ApplicationUser currentUser = UserManager.FindById(User.Identity.GetUserId());
+                return currentUser;
+            }
+
+        }
         private ApplicationDbContext db = new ApplicationDbContext();
 
         public ActionResult Index()
-        {  
-
-            return View(db.Postings.ToList());
+        {
+            ViewBag.CurrentUser = CurrentUser;
+            return View(db.Users.ToList());
         }
 
         public ActionResult About()
