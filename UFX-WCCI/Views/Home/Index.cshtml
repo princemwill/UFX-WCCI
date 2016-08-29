@@ -2,7 +2,10 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/W3.css" rel="stylesheet" />
+</head>
 
 <div class="jumbotron">
     <h1>Urban Farmer Xchange</h1>
@@ -10,67 +13,33 @@
     <p><a href="https://localhost:44377/Postings" class="btn btn-primary btn-lg">Postings </a></p>
 </div>
 
+@Html.ActionLink("Show Map", "PostsMap", "Postings")
 
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AppUser.UserName)
-        </th>
-        <th>
-            Photo
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Desc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </th>
-      
-        <th>
-            @Html.DisplayNameFor(model => model.PostingTime)
-        </th>
-    </tr>
+<h2>Produce Posts</h2>
+@foreach (var item in Model)
+{
 
-    @Html.ActionLink("Show Map", "PostsMap", "Postings")
+    <body class="w3-container">
 
-    @foreach (var item in Model)
-    {
-        <tr>
+        <div class="w3-card-4" style="width:40%">
 
-            <td>
-                @Html.ActionLink(item.AppUser.UserName, "UserProfile", "Postings", new { id = item.AppUser.Id }, null)
+            <header class="w3-container w3-light-grey">
+                <h3>
+                    @Html.ActionLink(item.AppUser.UserName, "UserProfile", "Postings", new { id = item.AppUser.Id }, null)
+                </h3>
+            </header>
 
-            </td>
-            <td>
-                @*Code from Olay tutorial to display image. Needs its own contoller to fully function*@
-                <img src="~/PostFile?id=@item.PostingID" width="75" height="75" />
-            </td>
+            <div class="w3-container">
+                <p>Price: @item.Price</p><p>Quantity: @item.Quantity</p>
+                <hr>
+                <img src="~/PostFile?id=@item.PostingID" alt="Post Picture" class="w3-left w3-accordion w3-margin-right" style="width:60px" />
+                @*<img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">*@
+                <p>@item.Desc</p><br>
+            </div>
+            <p class="w3-dark-grey"> @item.PostingTime.DayOfWeek, @item.PostingTime.Month/@item.PostingTime.Day @item.PostingTime.Hour:@item.PostingTime.Minute </p>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Desc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-           
-            <td>
-                @Html.DisplayFor(modelItem => item.PostingTime)
-            </td>
-            <td>
+        </div>
+    </body>
 
-                @if (item.AppUser == ViewBag.CurrentUser)
-                {
-                    <span> @Html.ActionLink("Edit", "Edit", new { id = item.PostingID }) |</span>
 
-                    <span>@Html.ActionLink("Delete", "Delete", new { id = item.PostingID })</span>
-                }
-            </td>
-        </tr>
-    }
-</table>
+}

@@ -32,6 +32,11 @@ namespace UFX_WCCI.Controllers
         {
         }
 
+        public ActionResult ManageConfirmation()
+        {
+            return View();
+        }
+
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;

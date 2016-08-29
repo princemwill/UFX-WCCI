@@ -1,4 +1,8 @@
-﻿@model UFX_WCCI.Models.IndexViewModel
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model UFX_WCCI.Models.IndexViewModel
 @{
     ViewBag.Title = "Manage";
 }
@@ -49,6 +53,7 @@
                 <div class="col-md-6">
                     @Html.Label("Change Profile Picture", new { @class = "control-label" })
                     <input type="file" name="upload" id="Avatar" />
+                    <text>Your photo has been changed!</text>
                     <br />
                 </div>
             </div>

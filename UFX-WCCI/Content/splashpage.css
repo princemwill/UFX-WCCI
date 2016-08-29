@@ -7,6 +7,14 @@
     background-color: #293541;
     opacity: 0.8;
 }
+.buttons2{
+    width: 160px;
+    background-color: #293541;
+    opacity: 0.8;
+}
+#b1, #b2{
+    display: inline-block !important;
+}
 .footer{
     font-size: xx-small !important;
 }
@@ -24,4 +32,11 @@ div.container.body-content{
 }
 body > div.navbar.navbar-inverse.navbar-fixed-top{
     height: 50px;
+    opacity: 0.3 !important;
+}
+.contclass{
+    text-align: left;
+}
+hr{
+    margin-bottom: 0;
 }

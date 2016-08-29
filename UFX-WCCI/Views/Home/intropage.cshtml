@@ -1,0 +1,91 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model UFX_WCCI.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+@*@ViewBag.HideNavBar = true;*@
+
+@*Need hidden input fields; input type=hidden
+    instead of document.getelementById, look at forms and change value of form field. Its Id will be document.getElementById.Latitude?
+*@
+
+
+
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <title>Eventually by HTML5 UP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link href="~/Content/splashpage.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+
+    <link href="~/main.css" rel="stylesheet" />
+    <link href="~/ie8.css" rel="stylesheet" />
+
+
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+</head>
+<body>
+
+
+
+    <!-- Header -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+    </div>
+    <header id="header">
+        <h1>UFX</h1>
+        <p>
+            Urban Farmer Exchange: find and trade with growers near you.
+        </p>
+    </header>
+
+    <!-- Signup Form -->
+   <div container class="contclass">
+       <form action="https://localhost:44377/Postings/Create">
+            @*<input type="email" name="email" id="email" placeholder="Email Address" />*@
+            <input type="submit" class="button buttons" value="Post" />
+           </form>
+       <form action="https://localhost:44377/Postings">
+            <input type="submit" class="button buttons" value="Find" />
+
+        </form>
+       </div>
+
+    @*<button type="submit" value="Post"></button>
+        <button type="submit" value="Find"></button>*@
+
+    @*<div container class="contclass">
+    <button class="buttons" type="button">Post</button>
+    <button class="buttons" type="button">Find</button>
+    </div>*@
+
+
+    <!-- Footer -->
+    <!--<footer id="footer">
+        <ul class="icons">
+            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+            <li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+        </ul>
+        <ul class="copyright">
+            <li>&copy; Untitled.</li>
+            <li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </footer> /-->
+    @*<footer>Credits: <a href="http://html5up.net">HTML5 UP</a></footer>*@
+    
+    <!-- Scripts -->
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="~/main.js"></script>
+</body>
+</html>

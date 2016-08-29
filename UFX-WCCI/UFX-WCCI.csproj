@@ -315,6 +315,8 @@
     <Content Include="_bg.scss" />
     <Content Include="_page.scss" />
     <Content Include="_typography.scss" />
+    <Content Include="Views\Home\IntroPage.cshtml" />
+    <Content Include="Views\Manage\ManageConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

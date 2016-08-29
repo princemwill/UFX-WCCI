@@ -24,6 +24,11 @@ namespace UFX_WCCI.Controllers
             return View();
         }
 
+        public ActionResult IntroPage()
+        {
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
