@@ -2,10 +2,6 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <link href="~/Content/W3.css" rel="stylesheet" />
-</head>
 
 <div class="jumbotron">
     <h1>Urban Farmer Xchange</h1>
@@ -30,7 +26,9 @@
                 </header>
 
                 <div class="w3-container">
-                    <p>Price: @item.Price</p><p>Quantity: @item.Quantity</p>
+                    <div class="w3-row-padding w3-container">
+                        <p class="w3-half w3-container">Price: @item.Price</p><p class="w3-half w3-container">Quantity: @item.Quantity</p>
+                    </div>
                     <hr>
                     <img src="~/PostFile?id=@item.PostingID" alt="Post Picture" class="w3-left w3-accordion w3-margin-right" style="width:60px"/>
                     @*<img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">*@
