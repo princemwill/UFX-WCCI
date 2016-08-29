@@ -25,23 +25,23 @@
         
         <body class="w3-container">
 
-            <h2>Card Example</h2>
+            <h2>Produce Posts</h2>
 
-            <div class="w3-card-4" style="width:100%">
+            <div class="w3-card-4" style="width:40%">
 
                 <header class="w3-container w3-light-grey">
-                    <h3>John Doe</h3>
+                    <h3>@item.AppUser.UserName</h3>
                 </header>
 
                 <div class="w3-container">
-                    <p>Price</p><p>Quantity</p>
+                    <p>Price: @item.Price</p><p>Quantity: @item.Quantity</p>
                     <hr>
-                    <img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-                    <p>CEO at Mighty Schools. Marketing and Advertising. Seeking a new job and new opportunities.</p><br>
+                    <img src="~/PostFile?id=@item.PostingID" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"/>
+                    @*<img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">*@
+                    <p>@item.Desc</p><br>
                 </div>
-
-                <button class="w3-btn-block w3-dark-grey">+ Connect</button>
-
+                <p class="w3-dark-grey"> @item.PostingTime.DayOfWeek, @item.PostingTime.Month/@item.PostingTime.Day @item.PostingTime.Hour:@item.PostingTime.Minute </p>
+                                
             </div>
         </body>
 
