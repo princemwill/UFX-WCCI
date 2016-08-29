@@ -30,10 +30,10 @@
         <br />
     </dd>
     <dd>
-      
+
 
         @using (Html.BeginForm("EditProfile", "Manage", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
+        {
             <div class="form-group">
                 <div class="col-md-10">
                     <input type="submit" value="Save" class="btn btn-default" />
@@ -44,7 +44,7 @@
             <div class="form-group">
                 <div class="col-md-6">
                     <p>Profile Picture</p>
-                    <img src="~/AvatarFile?id=@Model.Id" width="200" height="200" />
+                        <img src="~/AvatarFile?id=@Model.Id" width="200" height="200" />
                 </div>
                 <div class="col-md-6">
                     @Html.Label("Change Profile Picture", new { @class = "control-label" })
@@ -54,91 +54,88 @@
             </div>
 
             @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-6" })
-            @Html.EditorFor(model => model.Bio, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.Bio, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
 
 
         <!-- end Profile Picture -->
-            <div class="col-md-6 hide">
-                @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
-            
-                @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
-            </div>
+                        <div class="col-md-6 hide">
+                            @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
+
+                            @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
+                        </div>
 
 
-  
-        }
+
+                        }
     </dd>
 
 
-    @*
-        Phone Numbers can used as a second factor of verification in a two-factor authentication system.
 
-         See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-            for details on setting up this ASP.NET application to support two-factor authentication using SMS.
-
-         Uncomment the following block after you have set up two-factor authentication
-    *@
-    @*
-        <dt>Phone Number:</dt>
-        <dd>
-            @(Model.PhoneNumber ?? "None")
-            @if (Model.PhoneNumber != null)
-            {
-                <br />
-                <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
-                using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
-                }
-            }
-            else
-            {
-                <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
-            }
-        </dd>
-    *@
-
-    @*@if (Model.TwoFactor)
-        {
-            using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <text>Enabled
-                <input type="submit" value="Disable" class="btn btn-link" />
-                </text>
-            }
-        }
-        else
-        {
-            using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <text>Disabled
-                <input type="submit" value="Enable" class="btn btn-link" />
-                </text>
-            }
-        }*@
 
 </dl>
 
 
 @*Map info---------------------------------------------------------------------------*@
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsT1NB4_Y4FwHcrXCKqRXell4s6rInvUg&callback=getLocation"
-        async defer></script>
-
 @*displays map and markers accordingly after running all code below*@
-<div id="mapholder"></div>
+<div class="col-md-6" id="mapholder"></div>
 
-<script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsT1NB4_Y4FwHcrXCKqRXell4s6rInvUg&callback=getLocation"
+        defer></script>
+@*<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyBsT1NB4_Y4FwHcrXCKqRXell4s6rInvUg"></script>*@
+<script type="text/javascript">
+
+
+    var map;
+    var markers = [];
+    var newposition = false;
+
+
+    initialize();
+    getLocation();
+
+    function initialize() {
+
+        //navigator.geolocation;
+        //navigator.geolocation.getCurrentPosition();
+
+
+        //if no lat/lon entered get current coords, otherwise get from user profile
+        if (@Model.Latitude == 0){
+            lat = 41.1618538;
+            lon = -80.69716;
+            newposition = true;
+        }
+        else {
+            lat = @Model.Latitude;
+            lon = @Model.Longitude;
+        };
+
+        var myOptions = {
+            zoom: 10,
+            center: new google.maps.LatLng(lat,lon),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+
+        map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+
+        addMarker(new google.maps.LatLng(lat, lon), "You are here!");
+    }
+
+    function addMarker(latlng, myTitle) {
+        markers.push(new google.maps.Marker({
+            position: latlng,
+            map: map,
+            title: myTitle,
+            icon: "https://maps.google.com/mapfiles/marker" + String.fromCharCode(markers.length + 65) + ".png"
+        }));
+    }
+
     //Finds users initial location based on device location
-    var x = document.getElementById("demo");
     function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -148,8 +145,15 @@
     }
 
     function showPosition(position) {
-        lat = position.coords.latitude;
-        lon = position.coords.longitude;
+        if (newposition){
+            lat = 41.1618538;
+            lon = -80.69716;
+        }
+        else
+        {
+            lat = @Model.Latitude;
+            lon = @Model.Longitude;
+        };
         latlon = new google.maps.LatLng(lat, lon)
         mapholder = document.getElementById('mapholder')
         mapholder.style.height = '250px';
@@ -163,9 +167,9 @@
 
         //Allows tweaking of map details and presentation (I think)
         var myOptions = {
+
             center: latlon, zoom: 14,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            mapTypeControl: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,            
             navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
         }
 

@@ -2,9 +2,6 @@
 @model UFX_WCCI.Models.ApplicationUser
 
 
-@*@{
-        Layout = null;
-    }*@
 
 <!DOCTYPE html>
 
@@ -19,6 +16,29 @@
         <br />
         <br />
         @Model.UserName
+        <br />
+        <div>
+               @if (ViewBag.UserFollowing != 0)
+               {
+                   if (ViewBag.CurrentUser.Following.Contains(Model))
+                   {
+                    <div id="unfollow">
+                        @Html.ActionLink("UnFollow", "DeleteFollowing", "Postings", new { id = Model.Id }, null)
+                    </div>
+                   }
+                   else {
+                    <div id="follow">
+                        @Html.ActionLink("Follow", "AddFollowing", "Postings", new { id = Model.Id }, null)
+                    </div>
+                   }
+               }
+               else
+               {
+                <div id="follow">
+                    @Html.ActionLink("Follow", "AddFollowing", "Postings", new { id = Model.Id }, null)
+                </div>
+               }
+        </div>
         <br />
         <img src="~/AvatarFile?id=@Model.Id" width="200" height="200" />
         <br />
@@ -45,6 +65,7 @@
 
         var map;
         var markers = [];
+
 
         initialize();
 

@@ -13,7 +13,7 @@ namespace UFX_WCCI.Models
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
         public string Bio { get; set; }
-        public string Photo { get; set; }
+        public string PhotoName { get; set; }
         public float Latitude { get; set; }
         public float Longitude { get; set; }
         public string Id { get; set; }
