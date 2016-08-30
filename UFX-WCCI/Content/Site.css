@@ -87,3 +87,9 @@ body > div.navbar.navbar-inverse.navbar-fixed-top{
     opacity: 0.8;
 
 }
+p{
+    color: #fff;
+}
+body > div.container.body-content > form{
+    color: #fff;
+}
