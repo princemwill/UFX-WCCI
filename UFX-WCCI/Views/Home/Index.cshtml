@@ -53,7 +53,7 @@
         function initialize() {
             var myOptions = {
                 zoom: 10,
-                center: new google.maps.LatLong(@ViewBag.CurrentUser.Latitude,@ViewBag.CurrentUser.Longitude),
+                center: new google.maps.LatLng(@ViewBag.CurrentUser.Latitude,@ViewBag.CurrentUser.Longitude),
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 clickableIcons:true
             }
