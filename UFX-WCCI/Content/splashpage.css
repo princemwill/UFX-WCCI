@@ -67,3 +67,7 @@ ul li:hover ul.dropdown-menu{
     margin-left: 2px;
     vertical-align: middle;
 }
+div.navbar-collapse.collapse{
+    height: 50px !important;
+    background-color: transparent; 
+}

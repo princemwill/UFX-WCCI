@@ -32,21 +32,6 @@
             jQuery(this).find('.dropdown-menu1').stop(true, true).delay(200).fadeOut();
         });
     </script>*@
-<script>
-    $(function(){
-    $(".dropdown").hover(
-            function() {
-                $('.dropdown-menu', this).stop( true, true ).fadeIn("fast");
-                $(this).toggleClass('open');
-                $('b', this).toggleClass("caret caret-up");
-            },
-            function() {
-                $('.dropdown-menu', this).stop( true, true ).fadeOut("fast");
-                $(this).toggleClass('open');
-                $('b', this).toggleClass("caret caret-up");
-            });
-    });
-    </script>
 
 
 
@@ -67,14 +52,6 @@
 
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-
-    <script>
-    jQuery('.dropdown-menu1').hover(function () {
-        jQuery(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn();
-    }, function () {
-        jQuery(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut();
-    });
-    </script>
 
 
 
@@ -158,6 +135,31 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script src="~/main.js"></script>
+    <script>
+    $(function(){
+    $(".dropdown").hover(
+            function() {
+                $('.dropdown-menu', this).stop( true, true ).fadeIn("fast");
+                $(this).toggleClass('open');
+                $('b', this).toggleClass("caret caret-up");
+            },
+            function() {
+                $('.dropdown-menu', this).stop( true, true ).fadeOut("fast");
+                $(this).toggleClass('open');
+                $('b', this).toggleClass("caret caret-up");
+            });
+    });
+    </script>
+
+
+    @*<script>
+    jQuery('.dropdown-menu1').hover(function () {
+        jQuery(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn();
+    }, function () {
+        jQuery(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut();
+    });
+    </script>*@
+
 
 
 </body>

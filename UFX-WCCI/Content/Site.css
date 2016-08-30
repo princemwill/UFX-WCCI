@@ -6,12 +6,26 @@ body{
     /*background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3d/New_crops-Chicago_urban_farm.jpg');*/
     background-image: url('../BlurredMainPage.jpg');
     filter: blur(20px);
+    border: solid 2px #525451;
+    /*border: solid 5px black;*/
+    background-attachment: fixed;
+
    
+}
+h1.indexhead{
+    color: #fff;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 .aboutpage{
     background-color: #2C2D2E;
     color: #fff;
     opacity: 0.8;
+}
+.mapdiv{
+    border: solid 2px black;
+    margin-top: 80px;
 }
 /*.boxshadow {
     box-shadow: 10px 10px 5px #888888;
@@ -40,7 +54,7 @@ select,
 textarea {
     max-width: 280px;
 }
-.dropdown-menu{
+.caret-up{
     width: 0 !important; 
     height: 0 !important; 
     border-left: 4px solid rgba(0, 0, 0, 0) !important;
