@@ -1,0 +1,73 @@
+﻿body{
+    background-position: 0px -80px !important;
+}
+.buttons{
+    width: 160px;
+    background-color: #293541;
+    opacity: 0.8;
+}
+.buttons2{
+    width: 160px;
+    background-color: #293541;
+    opacity: 0.8;
+}
+#b1, #b2{
+    display: inline-block !important;
+}
+.footer{
+    font-size: xx-small !important;
+}
+h1{
+    font-family: 'Allerta Stencil', sans-serif !important;
+    font-weight: 200;
+}
+p{
+    color: #fff !important;
+    font-weight: bold !important;
+
+}
+div.container.body-content{
+    margin-left: 0 !important;
+}
+body > div.navbar.navbar-inverse.navbar-fixed-top{
+    height: 50px;
+    opacity: 0.8 !important;
+}
+.contclass{
+    text-align: left;
+}
+hr{
+    margin-bottom: 0;
+}
+ul li{
+        display: inline-block;
+        position: relative;
+        line-height: 21px;
+        text-align: left;
+    }
+ul li:hover ul.dropdown-menu{
+        display: block; /* Display the dropdown */
+    }
+.toprightmenu{
+    float: right;
+}
+#logoutForm > div.dropdown > button{
+    background-color: transparent;
+    border-color: transparent;
+    /*border-color: #2C2D2E*/
+}
+.dropdown-menu {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid rgba(0, 0, 0, 0);
+    border-right: 4px solid rgba(0, 0, 0, 0);
+    border-bottom: 4px solid;
+    
+    display: inline-block;
+    margin-left: 2px;
+    vertical-align: middle;
+}
+div.navbar-collapse.collapse{
+    height: 50px !important;
+    background-color: transparent; 
+}

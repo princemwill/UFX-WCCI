@@ -6,9 +6,12 @@
     <title>@ViewBag.Title - UFX</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/W3.css" rel="stylesheet" />
 
-    
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/main.css" rel="stylesheet" />
+    <link href="~/Content/W3.css" rel="stylesheet" />
+    <link href="~/Content/splashpage.css" rel="stylesheet" />
+
 
     <script type="text/javascript">
         var appInsights=window.appInsights||function(config){
@@ -16,10 +19,11 @@
         }({
             instrumentationKey:"d2c983cf-425d-42cb-bf2b-1ed40122af53"
         });
-        
+
         window.appInsights=appInsights;
         appInsights.trackPageView();
     </script>
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -30,7 +34,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("UFX", "IntroPage", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -43,15 +47,15 @@
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()              
-    </div>    
-        <hr />
-        <footer id="footer">
-            <p>&copy; @DateTime.Now.Year - UFX</p>
-        </footer>
-   
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
+        @RenderBody()
+    </div>
+    <hr />
+    <footer id="footer">
+        <p>&copy; @DateTime.Now.Year - UFX, Credits: <a href="http://html5up.net">HTML5 UP</a></p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
