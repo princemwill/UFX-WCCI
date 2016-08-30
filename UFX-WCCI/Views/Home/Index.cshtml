@@ -26,31 +26,31 @@
     <script type="text/javascript">
 
 
-    var map;
-    var markers = [];
-    //var userMarkers = [];
+        var map;
+        var markers = [];
+        //var userMarkers = [];
 
-    initialize();
+        initialize();
 
-    //$.each(userMarkers, function(index,Marker) {
-    //    $('#userpostings .list').append('<li><span><a href="/Postings/UserProfile?id=' + Marker.userId + '">' + Marker.userName + '</span></li>')});
+        //$.each(userMarkers, function(index,Marker) {
+        //    $('#userpostings .list').append('<li><span><a href="/Postings/UserProfile?id=' + Marker.userId + '">' + Marker.userName + '</span></li>')});
 
-    //$.each(userMarkers,google.maps.event.addListener(Marker, 'click', function() {
-    //    window.location.href = '/Postings/UserProfile?id=' + Marker.userId + '">' + Marker.userName + '</span></li>';
-    //}));
+        //$.each(userMarkers,google.maps.event.addListener(Marker, 'click', function() {
+        //    window.location.href = '/Postings/UserProfile?id=' + Marker.userId + '">' + Marker.userName + '</span></li>';
+        //}));
 
-    $.each(markers, function(index, marker) {
-        marker.addListener('click', function() {
-            window.location.href = this.url;
+        $.each(markers, function(index, marker) {
+            marker.addListener('click', function() {
+                window.location.href = this.url;
+            });
         });
-    });
 
         //$.each(markers,google.maps.event.addListener(marker, 'click', function() {
         //    window.location.href = this.url;
         //}));
 
-    //$('#userpostings .list').append('<li><span>@@Html.ActionLink(@@'+Marker.userName+',"UserProfile", "Postings",new { id = @@'+Marker.userId+' },null)</span></li>');
-    //    });
+        //$('#userpostings .list').append('<li><span>@@Html.ActionLink(@@'+Marker.userName+',"UserProfile", "Postings",new { id = @@'+Marker.userId+' },null)</span></li>');
+        //    });
 
         function initialize() {
             var myOptions = {
@@ -64,7 +64,7 @@
                 else
                 {
                     @:center: new google.maps.LatLng(41.88483, -81.34535),
-                }
+                                                                }
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 clickableIcons:true
             }
@@ -79,7 +79,7 @@
                         @:userMarkers[i].userPosts.push(@Html.Raw(Json.Encode(new { item = post.Desc, quantity = post.Quantity })));
                                 }
                     @:i++;*@
-                            }
+            }
         }
 
         function addMarker(latlng, myTitle,userId) {
@@ -102,42 +102,51 @@
 
 <h2>Produce Posts</h2>
 <div class="w3-row">
-  
-        @foreach (var item in Model)
+    @{int counter = 0;
+        string extrastyle = "";}
+    @foreach (var item in Model)
+    {
+        if (counter % 2 == 0)
         {
-            <div class="w3-half w3-container">
-
-                <div class="w3-card-4" style="margin-bottom: 20px;">
-
-                    <header class="w3-container w3-light-grey">
-                        <h3>
-                            @Html.ActionLink(item.AppUser.UserName, "UserProfile", "Postings", new { id = item.AppUser.Id }, null)
-                        </h3>
-                    </header>
-
-                    <div class="w3-container">
-                        <div class="w3-row-padding w3-container">
-                            <p class="w3-half w3-container">Price: @item.Price</p><p class="w3-half w3-container">Quantity: @item.Quantity</p>
-                        </div>
-                        <hr>
-                        <img src="~/PostFile?id=@item.PostingID" alt="Post Picture" class="w3-left w3-accordion w3-margin-right" style="width:60px" />
-                        @*<img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">*@
-                        <p>@item.Desc</p><br>
-                    </div>
-                    <p class="w3-dark-grey"> @item.PostingTime.DayOfWeek, @item.PostingTime.Month/@item.PostingTime.Day @item.PostingTime.Hour:@item.PostingTime.Minute </p>
-
-                </div>
-            </div>
-
-
+            extrastyle = " style = \"clear: left;\"";
         }
-    
+        else
+        {
+            extrastyle = "";
+        }
+        <div class="w3-half w3-container" @Html.Raw(extrastyle)>
+
+            <div class="w3-card-4" style="margin-bottom: 20px;">
+
+                <header class="w3-container w3-light-grey">
+                    <h3>
+                        @Html.ActionLink(item.AppUser.UserName, "UserProfile", "Postings", new { id = item.AppUser.Id }, null)
+                    </h3>
+                </header>
+
+                <div class="w3-container">
+                    <div class="w3-row-padding w3-container">
+                        <p class="w3-half w3-container">Price: @item.Price</p><p class="w3-half w3-container">Quantity: @item.Quantity</p>
+                    </div>
+                    <hr>
+                    <img src="~/PostFile?id=@item.PostingID" alt="Post Picture" class="w3-left w3-accordion w3-margin-right" style="width:60px" />
+                    @*<img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">*@
+                    <p>@item.Desc</p><br>
+                </div>
+                <p class="w3-dark-grey"> @item.PostingTime.DayOfWeek, @item.PostingTime.Month/@item.PostingTime.Day @item.PostingTime.Hour:@item.PostingTime.Minute </p>
+
+            </div>
+        </div>
+         counter++;
+
+    }
+
 </div>
 <br />
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
 
 @Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page}))
+    new { page }))
 
 

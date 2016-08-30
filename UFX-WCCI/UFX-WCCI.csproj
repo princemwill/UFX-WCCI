@@ -309,6 +309,7 @@
     <Content Include="Views\Postings\UserProfile.cshtml" />
     <Content Include="Views\Postings\PostsMap.cshtml" />
     <Content Include="Secrets.config" />
+    <Content Include="Views\Postings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
