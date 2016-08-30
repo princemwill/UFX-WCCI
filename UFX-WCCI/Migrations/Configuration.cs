@@ -27,13 +27,15 @@ namespace UFX_WCCI.Migrations
                 new UserStore<ApplicationUser>(context));
             var user = new ApplicationUser()
             {
-                UserName = "MotherofGardenLady",
+                UserName = "GardenLady1",
             };
-            ir = um.Create(user, "P_assw0rd1");
+            ir = um.Create(user, "GardenLady1!");
             if (ir.Succeeded == false)
                 return ir.Succeeded;
             ir = um.AddToRole(user.Id, "canEdit");
             SeedUser = user;
+            SeedUser.Latitude = 41.1618538f;
+            SeedUser.Longitude = -80.69716f;
             return ir.Succeeded;
         }
 
@@ -44,16 +46,18 @@ namespace UFX_WCCI.Migrations
             new Models.Posting
             {
                 PostingID = 1,
-                Desc = "7890 2nd Ave E",
-                Quantity = 2,
+                Desc = "golden potatoes",
+                Quantity = 20,
+                Price = "20.00",
                 PostingTime = DateTime.Now,
                 AppUser = SeedUser
             },
             new Models.Posting
             {
                 PostingID = 2,
-                Desc = "This is some awesomeness and some delicious kale and stuff",
+                Desc = "Curly kale",
                 Quantity = 50,
+                Price = "free",
                 PostingTime = DateTime.Now,
                 AppUser = SeedUser
             }
