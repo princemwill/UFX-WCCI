@@ -1,55 +1,69 @@
 ﻿@model UFX_WCCI.Models.IndexViewModel
+<br />
+<br />
 @{
-    ViewBag.Title = "Manage";
-}
 
+    ViewBag.Title = "Manage Profile";
+}
 @*Need hidden input fields; input type=hidden
     instead of document.getelementById, look at forms and change value of form field. Its Id will be document.getElementById.Latitude?
 *@
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
+<div class="col-md-6">
 
+    <br />
+    <div class="w3-card-4" style="height:200px">
+        <div class="w3-container">
+            <div class="row">
+                <div class="col-md-4">
+                    <p>
+                        <h2>@Model.UserName</h2>
+                    </p>
 
-
-
-@using (Html.BeginForm("EditProfile", "Manage", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-
-
-
-    //photo upload code from B4B sample
-    <div class="form-group">
-        <div class="col-md-6">
-            <br />
-            <br />
-            <br />
-
-            <h2>@Model.UserName</h2>
-            <br />
-
-            @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label" })
-            @Html.EditorFor(model => model.Bio, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
-
-            <p>Profile Picture</p>
-            @if (Model.PhotoName != null)
+                    @if (Model.PhotoName != null)
             {
-                <img id="output" src="/AvatarFile?id=@Model.Id" width="200" height="200" />
-            }
-            else
-            {
-                <h3>Please choose profile picture</h3>
-                <img id="output" width="200" height="200" />
-            }
+                        <img id="output" src="/AvatarFile?id=@Model.Id" height="100" />
+                    }
+                    else
+                    {
+                        <h3>Please choose profile picture</h3>
+                        <img id="output" height="100" />
+                    }
+                    @*<img src="~/AvatarFile?id=@Model.Id" alt="Post Picture" class="w3-left w3-accordion w3-margin-right" style="width:60px" />*@
+                    @*<img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">*@
+                </div>
+                <div class="col-md-8">
+                    <div class="w3-left-align">
+                        <br />
+                        <br />
+                        <p>
+                            @if (Model.Email != null)
+                            {
+                                <div id="newEmail"> @Model.Email </div>
+                            }
+                        </p>
+                        <br />
+                        <div id="newBio">@Model.Bio</div>
+                    </div>
+                </div>
+            </div>
 
-
-            <div id="mapholder"></div>
         </div>
+    </div>
 
-        <div class="col-md-6">
+    <h3><bold> Click and drag the pin to change your location</bold></h3>
+    <div id="mapholder"></div>
+    
+</div>
 
+
+
+<div class="col-md-6">
+    @using (Html.BeginForm("EditProfile", "Manage", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-group">
             <h3>Change your account settings</h3>
 
             <div>
@@ -65,44 +79,70 @@
                 }
                 ]
             </div>
-
-            <br />
-            <br />
             <br />
 
-            @Html.Label("Change Profile Picture", new { @class = "control-label" })
-
-            <input type="file" name="upload" accept="image/*" id="Avatar" onchange="loadFile(event)">
-
+            <br />
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             <script>
-                var loadFile = function(event) {
-                    var output = document.getElementById('output');
-                    output.src = URL.createObjectURL(event.target.files[0]);
-                };
+                var formEmail = document.getElementById("Email");
+                formEmail.addEventListener("change",function(){
+                    newEmail=document.getElementById("newEmail");
+                    newEmail.innerHTML = formEmail.value;});
             </script>
             <br />
-            <div class="form-group">
-                <div class="col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
+            @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Bio, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
+            <script>
+                var formBio = document.getElementById("Bio");
+                formBio.addEventListener("change",function(){
+                    newBio = document.getElementById("newBio");
+                    newBio.innerHTML = formBio.value;});
+            </script>
+
+
+            <br />
+
+            <div>
+                @Html.Label("Change Profile Picture", new { @class = "control-label" })
+
+                <input type="file" name="upload" accept="image/*" id="Avatar" onchange="loadFile(event)">
+
+                <script>
+                    var loadFile = function(event) {
+                        var output = document.getElementById('output');
+                        output.src = URL.createObjectURL(event.target.files[0]);
+                    };
+                </script>
             </div>
+            <br />
 
         </div>
-    </div>
+        <br />
+        <div class="hide">
+            @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
+
+            @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    }
+
+   
+    <!-- end Profile Picture -->
+
+</div>
 
 
-        <!-- end Profile Picture -->
-    <div class="col-md-6 hide">
-        @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label" })
-        @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
-
-        @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label" })
-        @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
-    </div>
-
-}
 
 
 
