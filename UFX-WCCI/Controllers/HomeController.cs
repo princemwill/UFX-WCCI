@@ -16,9 +16,11 @@ namespace UFX_WCCI.Controllers
 
             get
             {
+
                 UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
                 ApplicationUser currentUser = UserManager.FindById(User.Identity.GetUserId());
                 return currentUser;
+
             }
 
         }
