@@ -307,10 +307,8 @@
     <Content Include="Views\Postings\Details.cshtml" />
     <Content Include="Views\Postings\Edit.cshtml" />
     <Content Include="Views\Postings\UserProfile.cshtml" />
-    <Content Include="Secrets.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Views\Postings\PostsMap.cshtml" />
+    <Content Include="Secrets.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

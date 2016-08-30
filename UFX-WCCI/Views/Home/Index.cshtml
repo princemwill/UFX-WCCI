@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<UFX_WCCI.Models.ApplicationUser>
+﻿@model PagedList.IPagedList<UFX_WCCI.Models.Posting>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -7,17 +7,17 @@
 }
 
 @*<div class="jumbotron">
-    <h1>Urban Farmer Xchange</h1>
-    <p class="lead">Like craigslist for gardeners</p>
-    <p><a href="https://localhost:44377/Postings" class="btn btn-primary btn-lg">Postings </a></p>
-</div>*@
+        <h1>Urban Farmer Xchange</h1>
+        <p class="lead">Like craigslist for gardeners</p>
+        <p><a href="https://localhost:44377/Postings" class="btn btn-primary btn-lg">Postings </a></p>
+    </div>*@
 
 
 <div>
     <div id="map_canvas" class="col-md-12" style="height:550px;"></div>
     @*<div id="userpostings" class="col-md-6" style="padding-top:40px;">
-        <ol type="A" class="list"></ol>
-    </div>*@
+            <ol type="A" class="list"></ol>
+        </div>*@
 
 </div>
 
@@ -55,7 +55,16 @@
         function initialize() {
             var myOptions = {
                 zoom: 10,
-                center: new google.maps.LatLng(@ViewBag.CurrentUser.Latitude,@ViewBag.CurrentUser.Longitude),
+                //if user is logged in
+                @if (ViewBag.CurrentUser != null)
+                {
+                    @:center: new google.maps.LatLng(@ViewBag.CurrentUser.Latitude, @ViewBag.CurrentUser.Longitude),
+
+                }
+                else
+                {
+                    @:center: new google.maps.LatLng(41.88483, -81.34535),
+                }
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 clickableIcons:true
             }
@@ -63,7 +72,7 @@
             map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
             var i = 0;
 
-            @foreach (var user in Model) {
+            @foreach (var user in ViewBag.AllUsers) {
                    @:addMarker(new google.maps.LatLng(@user.Latitude, @user.Longitude), "@user.UserName","@user.Id");
 
                     @*foreach(var post in user.Posts){
@@ -79,7 +88,7 @@
                 map: map,
                 title: myTitle,
                 icon: "https://maps.google.com/mapfiles/marker" + String.fromCharCode(markers.length + 65) + ".png",
-                url:'/Postings/UserProfile?id=' + userId 
+                url:'/Postings/UserProfile?id=' + userId
             }));
 
 
@@ -93,11 +102,10 @@
 
 <h2>Produce Posts</h2>
 <div class="w3-row">
-@foreach (var user in Model)
-    {
-        foreach (var item in user.Posts)
+  
+        @foreach (var item in Model)
         {
-        <div class="w3-half w3-container">
+            <div class="w3-half w3-container">
 
                 <div class="w3-card-4" style="margin-bottom: 20px;">
 
@@ -119,15 +127,17 @@
                     <p class="w3-dark-grey"> @item.PostingTime.DayOfWeek, @item.PostingTime.Month/@item.PostingTime.Day @item.PostingTime.Hour:@item.PostingTime.Minute </p>
 
                 </div>
-        </div>
-        
+            </div>
 
-    }
-}
+
+        }
+    
 </div>
 <br />
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
+
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page}))
+
 

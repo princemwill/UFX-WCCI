@@ -17,9 +17,11 @@ namespace UFX_WCCI.Controllers
 
             get
             {
+
                 UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
                 ApplicationUser currentUser = UserManager.FindById(User.Identity.GetUserId());
                 return currentUser;
+
             }
 
         }
@@ -28,10 +30,15 @@ namespace UFX_WCCI.Controllers
         public ActionResult Index(int? page)
         {
             ViewBag.CurrentUser = CurrentUser;
+            ViewBag.AllUsers = db.Users.ToList();
             int pageSize = 6;
             int pageNumber = (page ?? 1);
 
-            return View(db.Postings.ToPagedList(pageNumber, pageSize));
+            var postings = from p in db.Postings
+                           orderby p.PostingTime descending
+                           select p;
+
+            return View(postings.ToPagedList(pageNumber, pageSize));
         }
        
         public ActionResult About()
