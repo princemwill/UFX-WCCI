@@ -1,5 +1,10 @@
 ﻿
-
+body{
+    /*background-color: #5f6571;*/
+    /*background-color: #3e3d3b;*/
+    background-color: #415e6a;
+   
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -18,4 +23,32 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+.dropdown-menu{
+    width: 0 !important; 
+    height: 0 !important; 
+    border-left: 4px solid rgba(0, 0, 0, 0) !important;
+    border-right: 4px solid rgba(0, 0, 0, 0) !important;
+    border-bottom: 4px solid !important;
+    
+    display: inline-block !important;
+    margin-left: 2px !important;
+    vertical-align: middle !important;
+}
+body > div.navbar.navbar-inverse.navbar-fixed-top > div > div.navbar-collapse.collapse{
+    background-color: #2C2D2E !important;
+    opacity: 0.6 !important;
+}
+body > div.navbar.navbar-inverse.navbar-fixed-top{
+        background-color: #2C2D2E !important;
+    opacity: 0.6 !important;
+}
+.w3-container{
+    border-color: #144e1e !important;
+    color: #144e1e !important;
+}
+.w3-light-grey{
+    border-color: #144e1e;
+    color: #144e1e !important;
+
 }

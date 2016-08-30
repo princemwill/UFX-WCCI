@@ -238,7 +238,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\splashpage.css" />
     <Content Include="Content\style.css" />
-
     <Content Include="Content\W3.css" />
     <Content Include="favicon.ico" />
     <Content Include="font-awesome.min.css" />
@@ -317,8 +316,8 @@
     <Content Include="_bg.scss" />
     <Content Include="_page.scss" />
     <Content Include="_typography.scss" />
-    <Content Include="Views\Home\IntroPage.cshtml" />
     <Content Include="Views\Manage\ManageConfirmation.cshtml" />
+    <Content Include="Views\Home\IntroPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

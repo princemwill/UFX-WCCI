@@ -47,6 +47,11 @@ namespace UFX_WCCI.Controllers
         public ActionResult UserProfile(string Id)
         {
             ApplicationUser user = db.Users.Find(Id);
+            if (user == null)
+            {
+                user = CurrentUser;
+            }
+
             ViewBag.UserFollowing = CurrentUser.Following.Count;
             ViewBag.CurrentUser = CurrentUser;
 

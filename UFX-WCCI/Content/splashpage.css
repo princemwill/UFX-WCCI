@@ -1,5 +1,4 @@
 ﻿body{
-    /*background: url('https://upload.wikimedia.org/wikipedia/commons/3/3d/New_crops-Chicago_urban_farm.jpg') !important;*/
     background-position: 0px -80px !important;
 }
 .buttons{
@@ -32,11 +31,39 @@ div.container.body-content{
 }
 body > div.navbar.navbar-inverse.navbar-fixed-top{
     height: 50px;
-    opacity: 0.3 !important;
+    opacity: 0.6 !important;
 }
 .contclass{
     text-align: left;
 }
 hr{
     margin-bottom: 0;
+}
+ul li{
+        display: inline-block;
+        position: relative;
+        line-height: 21px;
+        text-align: left;
+    }
+ul li:hover ul.dropdown-menu{
+        display: block; /* Display the dropdown */
+    }
+.toprightmenu{
+    float: right;
+}
+#logoutForm > div.dropdown > button{
+    background-color: transparent;
+    border-color: transparent;
+    /*border-color: #2C2D2E*/
+}
+.dropdown-menu {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid rgba(0, 0, 0, 0);
+    border-right: 4px solid rgba(0, 0, 0, 0);
+    border-bottom: 4px solid;
+    
+    display: inline-block;
+    margin-left: 2px;
+    vertical-align: middle;
 }

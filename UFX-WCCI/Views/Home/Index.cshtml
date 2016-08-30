@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="~/Content/W3.css" rel="stylesheet" />
+    @*<link href="~/Content/splashpage.css" rel="stylesheet" />*@
+    <link href="~/Content/Site.css" rel="stylesheet" />
 </head>
 
-<div class="jumbotron">
+<div>
     <h1>Urban Farmer Xchange</h1>
     <p class="lead">Like craigslist for gardeners</p>
     <p><a href="https://localhost:44377/Postings" class="btn btn-primary btn-lg">Postings </a></p>
@@ -42,6 +44,10 @@
             <p class="w3-dark-grey"> @item.PostingTime.DayOfWeek, @item.PostingTime.Month/@item.PostingTime.Day @item.PostingTime.Hour:@item.PostingTime.Minute </p>
 
         </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        <script src="~/main.js"></script>
     </body>
 
 
