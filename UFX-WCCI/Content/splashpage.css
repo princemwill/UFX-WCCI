@@ -31,7 +31,7 @@ div.container.body-content{
 }
 body > div.navbar.navbar-inverse.navbar-fixed-top{
     height: 50px;
-    opacity: 0.6 !important;
+    opacity: 0.8 !important;
 }
 .contclass{
     text-align: left;
