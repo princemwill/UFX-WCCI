@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UFX_WCCI.Models;
+using PagedList;
 
 namespace UFX_WCCI.Controllers
 {
@@ -24,12 +25,15 @@ namespace UFX_WCCI.Controllers
         }
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             ViewBag.CurrentUser = CurrentUser;
-            return View(db.Users.ToList());
-        }
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
 
+            return View(db.Postings.ToPagedList(pageNumber, pageSize));
+        }
+       
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

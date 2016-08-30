@@ -1,4 +1,6 @@
-﻿@model IEnumerable<UFX_WCCI.Models.ApplicationUser>
+﻿@model PagedList.IPagedList<UFX_WCCI.Models.ApplicationUser>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Home Page";
@@ -123,6 +125,9 @@
     }
 }
 </div>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page}))
 
-k
