@@ -78,6 +78,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -239,6 +247,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\splashpage.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\PagedList.css" />
+
     <Content Include="Content\W3.css" />
     <Content Include="favicon.ico" />
     <Content Include="font-awesome.min.css" />
@@ -306,19 +316,16 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Postings\Create.cshtml" />
     <Content Include="Views\Postings\Delete.cshtml" />
-    <Content Include="Views\Postings\Details.cshtml" />
     <Content Include="Views\Postings\Edit.cshtml" />
-    <Content Include="Views\Postings\Index.cshtml" />
     <Content Include="Views\Postings\UserProfile.cshtml" />
-    <Content Include="Secrets.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Views\Postings\PostsMap.cshtml" />
     <Content Include="_bg.scss" />
     <Content Include="_page.scss" />
     <Content Include="_typography.scss" />
     <Content Include="Views\Manage\ManageConfirmation.cshtml" />
     <Content Include="Views\Home\IntroPage.cshtml" />
+
+    <Content Include="Secrets.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

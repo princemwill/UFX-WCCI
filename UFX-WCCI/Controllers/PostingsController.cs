@@ -10,6 +10,7 @@ using UFX_WCCI.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
+
 namespace UFX_WCCI.Controllers
 {
     public class PostingsController : Controller
@@ -69,7 +70,7 @@ namespace UFX_WCCI.Controllers
         public ActionResult Index()
         {
             ViewBag.CurrentUser = CurrentUser;
-            return View(db.Postings.ToList());
+            return View(db.Users.ToList());
         }
 
         // GET: Postings/Details/5

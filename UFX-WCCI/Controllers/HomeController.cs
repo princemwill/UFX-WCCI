@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UFX_WCCI.Models;
+using PagedList;
 
 namespace UFX_WCCI.Controllers
 {
@@ -16,20 +17,30 @@ namespace UFX_WCCI.Controllers
 
             get
             {
+
                 UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
                 ApplicationUser currentUser = UserManager.FindById(User.Identity.GetUserId());
                 return currentUser;
+
             }
 
         }
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             ViewBag.CurrentUser = CurrentUser;
-            return View(db.Users.ToList());
-        }
+            ViewBag.AllUsers = db.Users.ToList();
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
 
+            var postings = from p in db.Postings
+                           orderby p.PostingTime descending
+                           select p;
+
+            return View(postings.ToPagedList(pageNumber, pageSize));
+        }
+       
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
