@@ -65,6 +65,7 @@ body > div.navbar.navbar-inverse.navbar-fixed-top{
 
 #map_canvas{
     margin-top:0px;
+    border: solid 2px #2C2D2E;
 }
 
 .maintitle{
@@ -73,6 +74,16 @@ body > div.navbar.navbar-inverse.navbar-fixed-top{
     text-align:center;
 }
 
+#createbutton {
+    float:left;
+    margin-top: 10px !important;
+    opacity: 0.8;
+    background-color: #1AA486;
+    color: #fff;
+}
+#quantitybox {
+    background-color: transparent;
+}
 
 /*Stuff from main.css ------------------------------>*/
 
