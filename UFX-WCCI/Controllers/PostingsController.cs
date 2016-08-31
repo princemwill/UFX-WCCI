@@ -122,12 +122,14 @@ namespace UFX_WCCI.Controllers
 
                 }
                 //save posting to the database
+                posting.AppUser = CurrentUser;
                 CurrentUser.Posts.Add(posting);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                var currentId = CurrentUser.Id;
+                return RedirectToAction("UserProfile",new { Id = currentId });
             }
 
-            return View(posting);
+            return RedirectToAction("Index","Home");
         }
 
         // GET: Postings/Edit/5
@@ -150,8 +152,10 @@ namespace UFX_WCCI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PostingID,Price,Desc,Quantity,PostingTime")] Posting posting, HttpPostedFileBase upload)
+        public ActionResult Edit([Bind(Include = "PostingID,Price,Desc,Quantity")] Posting posting, HttpPostedFileBase upload)
         {
+            posting.PostingTime = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 if (upload != null && upload.ContentLength > 0)
@@ -174,7 +178,11 @@ namespace UFX_WCCI.Controllers
                 }
                 db.Entry(posting).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                var currentId = CurrentUser.Id;
+                return RedirectToAction("UserProfile", new { Id = currentId });
+
+                //return RedirectToAction("Index");
             }
             return View(posting);
         }
@@ -202,7 +210,8 @@ namespace UFX_WCCI.Controllers
             Posting posting = db.Postings.Find(id);
             db.Postings.Remove(posting);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            var currentId = CurrentUser.Id;
+            return RedirectToAction("UserProfile",new { Id = currentId });
         }
 
         protected override void Dispose(bool disposing)

@@ -22,8 +22,7 @@
                         <h2>@Model.UserName</h2>
                     </p>
 
-                    @if (Model.PhotoName != null)
-            {
+                    @if (Model.PhotoName != null) {
                         <img id="output" src="/AvatarFile?id=@Model.Id" height="100" />
                     }
                     else
@@ -38,12 +37,12 @@
                     <div class="w3-left-align">
                         <br />
                         <br />
-                        <p>
+                        <div>
                             @if (Model.Email != null)
                             {
                                 <div id="newEmail"> @Model.Email </div>
                             }
-                        </p>
+                        </div>
                         <br />
                         <div id="newBio">@Model.Bio</div>
                     </div>
