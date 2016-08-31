@@ -12,25 +12,28 @@
             <p>
                 <h2>@Model.UserName</h2>
                 <div>
-                    @if (ViewBag.UserFollowing != 0)
-            {
-                if (ViewBag.CurrentUser.Following.Contains(Model))
-                {
-                            <button id="unfollow" class="btn-group-sm">
-                                @Html.ActionLink("UnFollow", "DeleteFollowing", "Postings", new { id = Model.Id }, null)
-                            </button>
+                    @if (ViewBag.CurrentUser.UserName != Model.UserName)
+                    {
+                        if (ViewBag.UserFollowing != 0)
+                        {
+                            if (ViewBag.CurrentUser.Following.Contains(Model))
+                            {
+                                <button id="unfollow" class="btn-group-sm">
+                                    @Html.ActionLink("UnFollow", "DeleteFollowing", "Postings", new { id = Model.Id }, null)
+                                </button>
+                            }
+                            else {
+                                <button id="follow" class="btn-group-sm">
+                                    @Html.ActionLink("Follow", "AddFollowing", "Postings", new { id = Model.Id }, null)
+                                </button>
+                            }
                         }
-                        else {
+                        else
+                        {
                             <button id="follow" class="btn-group-sm">
                                 @Html.ActionLink("Follow", "AddFollowing", "Postings", new { id = Model.Id }, null)
                             </button>
                         }
-                    }
-                    else
-                    {
-                        <button id="follow" class="btn-group-sm">
-                            @Html.ActionLink("Follow", "AddFollowing", "Postings", new { id = Model.Id }, null)
-                        </button>
                     }
                 </div>
             </p>
@@ -99,18 +102,25 @@
     <br />
     @foreach (var item in Model.Posts)
     {
+        <div class="col-md-8">
+            <div class="w3-card-4" style="width:80%">
 
-        <div class="w3-card-4" style="width:40%">
-
-            <div class="w3-container">
-                <p>Price: @item.Price</p><p>Quantity: @item.Quantity</p>
-                <hr>
-                <img src="~/PostFile?id=@item.PostingID" alt="Post Picture" class="w3-left w3-accordion w3-margin-right" style="width:60px" />
-                @*<img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">*@
-                <p>@item.Desc</p><br>
+                <div class="w3-container">
+                    <p>Price: @item.Price</p><p>Quantity: @item.Quantity</p>
+                    <hr>
+                    <img src="~/PostFile?id=@item.PostingID" alt="Post Picture" class="w3-left w3-accordion w3-margin-right" style="width:60px" />
+                    @*<img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">*@
+                    <p>@item.Desc</p><br>
+                </div>
+                <p class="w3-dark-grey"> @item.PostingTime.DayOfWeek, @item.PostingTime.Month/@item.PostingTime.Day @item.PostingTime.Hour:@item.PostingTime.Minute </p>
             </div>
-            <p class="w3-dark-grey"> @item.PostingTime.DayOfWeek, @item.PostingTime.Month/@item.PostingTime.Day @item.PostingTime.Hour:@item.PostingTime.Minute </p>
-
+        </div>
+        <div class="col-md-4">
+            @if (Model.UserName == ViewBag.CurrentUser.UserName)
+            {
+                <div class="btn-lg">@Html.ActionLink("Edit", "Edit", new { id = item.PostingID })</div>
+                <div class="btn-lg">@Html.ActionLink("Delete", "Delete", new { id = item.PostingID })</div>
+            }
         </div>
     }
 </div>
