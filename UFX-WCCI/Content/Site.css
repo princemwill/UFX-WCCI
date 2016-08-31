@@ -87,9 +87,9 @@ body > div.navbar.navbar-inverse.navbar-fixed-top{
 h3{
     color: #fff;
 }
-/*#Email{
-    color: #fff:
-}*/
+#Email{
+    color: #fff;
+}
 #cardusername{
     color: #1AA486;
     font-weight: bold;
@@ -106,6 +106,9 @@ body > div.container.body-content > div > dl{
 }
 h4{
     color: #fff;
+}
+div.col-md-10{
+    color: #fff !important;
 }
 
 

@@ -249,12 +249,14 @@
     <Content Include="Content\JoanMayerCampbellResizedPic.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Prince_Williams_Profile_icon.jpg" />
+    <Content Include="Content\splashpage.css" />
     <Content Include="Content\W3.css" />
     <Content Include="Content\WillB.PNG" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="main.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -314,6 +316,7 @@
     <Content Include="Views\Postings\PostsMap.cshtml" />
     <Content Include="Secrets.config" />
     <Content Include="Views\Postings\Index.cshtml" />
+    <Content Include="Views\Home\IntroPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

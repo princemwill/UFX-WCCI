@@ -40,7 +40,10 @@ namespace UFX_WCCI.Controllers
 
             return View(postings.ToPagedList(pageNumber, pageSize));
         }
-       
+       public ActionResult IntroPage()
+        {
+            return View();
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
