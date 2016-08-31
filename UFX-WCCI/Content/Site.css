@@ -19,3 +19,39 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+/*New css ------------------------------>*/
+
+body{    background-image: url('../BlurredMainPage.jpg');
+    border: solid 2px #525451;
+    background-attachment: fixed;
+}
+
+.aboutpage{
+    background-color: #2C2D2E;
+    color: #fff;
+    opacity: 0.8;
+}
+
+.mapdiv{
+    border: solid 2px #2C2D2E;
+    margin-top: 700px !important;
+}
+
+.w3-container{
+    border-color: #144e1e !important;
+    color: #144e1e !important;
+}
+
+.w3-card-4{
+    background-color: #fff !important;
+    opacity: 0.8;
+    border: solid 1px #2C2D2E !important;
+
+}
+
+p{
+    color: #fff;
+}
+
