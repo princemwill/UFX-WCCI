@@ -9,7 +9,6 @@
     instead of document.getelementById, look at forms and change value of form field. Its Id will be document.getElementById.Latitude?
 *@
 
-<h2>@ViewBag.Title</h2>
 
 <div class="col-md-6">
 
@@ -22,7 +21,8 @@
                         <h2>@Model.UserName</h2>
                     </p>
 
-                    @if (Model.PhotoName != null) {
+                    @if (Model.PhotoName != null)
+                    {
                         <img id="output" src="/AvatarFile?id=@Model.Id" height="100" />
                     }
                     else
@@ -54,7 +54,7 @@
 
     <h3><bold> Click and drag the pin to change your location</bold></h3>
     <div id="mapholder"></div>
-    
+
 </div>
 
 
@@ -136,7 +136,7 @@
         </div>
     }
 
-   
+
     <!-- end Profile Picture -->
 
 </div>
