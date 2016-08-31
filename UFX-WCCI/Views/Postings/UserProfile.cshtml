@@ -118,8 +118,8 @@
         <div class="col-md-4">
             @if (Model.UserName == ViewBag.CurrentUser.UserName)
             {
-                <div class="btn-lg">@Html.ActionLink("Edit", "Edit", new { id = item.PostingID })</div>
-                <div class="btn-lg">@Html.ActionLink("Delete", "Delete", new { id = item.PostingID })</div>
+                <div class="editdelete btn-lg">@Html.ActionLink("Edit", "Edit", new { id = item.PostingID })</div>
+                <div class="editdelete btn-lg">@Html.ActionLink("Delete", "Delete", new { id = item.PostingID })</div>
             }
         </div>
     }
