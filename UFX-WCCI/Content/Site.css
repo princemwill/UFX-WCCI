@@ -40,8 +40,8 @@ body{    background-image: url('../BlurredMainPage.jpg');
 }
 
 .w3-container{
-    border-color: #144e1e !important;
-    color: #144e1e !important;
+    border-color: #1AA486 !important;
+    color: #1AA486 !important;
 }
 
 .w3-card-4{
@@ -52,11 +52,25 @@ body{    background-image: url('../BlurredMainPage.jpg');
 }
 
 p{
-    color: #fff;
+    color: #1AA486;
 }
 
 h2{
     color: #fff;
+}
+
+body > div.navbar.navbar-inverse.navbar-fixed-top{
+    height: 50px;
+}
+
+#map_canvas{
+    margin-top:0px;
+}
+
+.maintitle{
+    color: #fff;
+    text-size-adjust: 4000%;
+    text-align:center;
 }
 
 
