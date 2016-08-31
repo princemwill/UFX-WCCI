@@ -85,6 +85,8 @@ namespace UFX_WCCI.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        public float Latitude { get; set; }
+        public float Longitude { get; set; }
     }
 
     public class ResetPasswordViewModel

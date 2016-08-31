@@ -110,6 +110,16 @@ h4{
 .form-group{
     color: #fff;
 }
+div.col-md-10{
+    color: #fff !important;
+}
+body > div.container.body-content > div:nth-child(1) > div.w3-card-4 > div {
+   word-wrap: break-word;
+}
+#profilename{
+    color: #1AA486;
+}
+
 /*Stuff from main.css ------------------------------>*/
 
 
