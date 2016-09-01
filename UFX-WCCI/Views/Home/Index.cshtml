@@ -60,8 +60,8 @@
                 }
                 else
                 {
-                    @:center: new google.maps.LatLng(41.88483, -81.34535),
-                                                                                }
+                    @:center: new google.maps.LatLng(41.502891, -81.6399632),
+                                                                                                }
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 clickableIcons:true
             }
@@ -131,9 +131,19 @@
                     <div class="w3-card-4" style="margin-bottom: 20px;">
 
                         <header class="w3-container w3-light-grey">
-                            <h3 id="cardusername">
-                                @Html.ActionLink(item.AppUser.UserName, "UserProfile", "Postings", new { id = item.AppUser.Id }, null)
-                            </h3>
+                            @if (ViewBag.CurrentUser != null)
+                            {
+                                <h3 id="cardusername">
+                                    @Html.ActionLink(item.AppUser.UserName, "UserProfile", "Postings", new { id = item.AppUser.Id }, null)
+                                </h3>
+                            }
+                            else
+                            {
+                                <h3 id="cardusername">
+                                    @item.AppUser.UserName
+                                </h3>
+
+                            }
                         </header>
 
                         <div class="w3-container">
