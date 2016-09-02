@@ -71,3 +71,12 @@ div.navbar-collapse.collapse{
     height: 50px !important;
     background-color: transparent; 
 }
+.splashhead{
+    margin-top: 140px !important
+}
+#footer1{
+    margin-top: 200px;
+}
+input.button.buttons{
+    opacity: 0.8 !important;
+}

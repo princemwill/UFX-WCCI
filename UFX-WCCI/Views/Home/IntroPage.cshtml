@@ -35,12 +35,12 @@
 <html>
 <head>
 
-    <title>Eventually by HTML5 UP</title>
+    <title>Urban Farmer Exchange</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-    @Styles.Render("~/Content/css")
-
+    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Content/site2.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
     <link href="~/Content/splashpage.css" rel="stylesheet" />
@@ -52,14 +52,10 @@
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 
-
-
-
-
 </head>
 <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -79,9 +75,9 @@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
+    </div>*@
 
-
+    <div class="splashhead">
     <!-- Header -->
     <header id="header">
         <h1>UFX</h1>
@@ -92,18 +88,14 @@
 
     <!-- Signup Form -->
     <div container class="contclass">
-        <form action="https://localhost:44377/Postings/Create">
-            @*<input type="email" name="email" id="email" placeholder="Email Address" />*@
-            <input type="submit" class="button buttons" value="Post" />
-            <input type="submit" class="button buttons" value="Find" />
-        </form>
 
-        @*<form action="https://localhost:44377/Postings">
-                <input type="submit" class="button buttons" value="Find" />
 
-            </form>*@
+        @*<input type="submit" class="button buttons" value="Post" />
+
+        <input type="submit" class="button buttons" value="Find" />*@
 
     </div>
+        </div>
 
     @*<button type="submit" value="Post"></button>
         <button type="submit" value="Find"></button>*@
@@ -159,7 +151,8 @@
         });
         </script>*@
 
-
-
+    <footer id="footer1">
+        <p class="smalltext" >&copy; @DateTime.Now.Year - UFX</a></p>
+    </footer>
 </body>
 </html>

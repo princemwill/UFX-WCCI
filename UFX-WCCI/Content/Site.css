@@ -1,13 +1,9 @@
 ﻿
 body {
-    /*background-color: #5f6571;*/
-    /*background-color: #3e3d3b;*/
+
     background-color: #415e6a;
-    /*background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3d/New_crops-Chicago_urban_farm.jpg');*/
-    /*background-image: url('../BlurredMainPage.jpg');*/
-    filter: blur(20px);
+    background-image: url('../BlurredMainPage.jpg');
     border: solid 2px #525451;
-    /*border: solid 5px black;*/
     background-attachment: fixed;
 }
 .indexhead{
@@ -25,6 +21,7 @@ body {
 .mapdiv{
     border: solid 2px #2C2D2E;
     margin-top: 700px !important;
+    border-radius: 10px;
 }
 /*.boxshadow {
     box-shadow: 10px 10px 5px #888888;
@@ -74,7 +71,8 @@ body > div.navbar.navbar-inverse.navbar-fixed-top{
 }
 .w3-container{
     border-color: #144e1e !important;
-    color: #144e1e !important;
+    /*color: #144e1e !important;*/
+    color: black;
 }
 .w3-light-grey{
     border: solid 1px #2C2D2E !important;
@@ -85,6 +83,7 @@ body > div.navbar.navbar-inverse.navbar-fixed-top{
     background-color: #fff !important;
     opacity: 0.8;
     border: solid 1px #2C2D2E !important;
+    color: black;
 
 }
 p{
@@ -93,3 +92,14 @@ p{
 body > div.container.body-content > form{
     color: #fff;
 }
+body > div.container.body-content > div.w3-row > div:nth-child(3) > div > div > div{
+    color: red;
+}
+.smalltext{
+    font-size: xx-small !important;
+}
+
+div.col-md-10{
+    color: #fff;
+}
+

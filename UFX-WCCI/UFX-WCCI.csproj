@@ -245,8 +245,8 @@
     <Content Include="BlurredMainPage.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\mainpage.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\site2.css" />
     <Content Include="Content\splashpage.css" />
     <Content Include="Content\W3.css" />
     <Content Include="favicon.ico" />
