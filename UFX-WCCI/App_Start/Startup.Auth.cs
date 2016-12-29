@@ -61,9 +61,12 @@ namespace UFX_WCCI
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = WebConfigurationManager.AppSettings["GoogleClientId"],
-                ClientSecret = WebConfigurationManager.AppSettings["GoogleSecret"]
-        
+                //ClientId = WebConfigurationManager.AppSettings["GoogleClientId"],
+                //ClientSecret = WebConfigurationManager.AppSettings["GoogleSecret"]
+                ClientId = WebConfigurationManager.AppSettings["353210809060-4fv49kl3gfovhmd9ot6l9r9uhet1otrv.apps.googleusercontent.com"],
+                ClientSecret = WebConfigurationManager.AppSettings["-dEEx7pulN0JA0H5J607txgN"]
+                //this change did NOTHING!
+
             });
         }
     }
